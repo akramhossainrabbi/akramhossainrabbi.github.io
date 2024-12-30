@@ -11,162 +11,7 @@
     <link href="./asset/css/app.css" rel="stylesheet">
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-    <style>
-        /* Additional custom styles */
-        .indicator {
-            position: fixed;
-            top: 50%;
-            right: 0; /* Change this from 'bottom: 0' to 'right: 0' */
-            transform: translateY(-50%);
-            z-index: 999;
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-            transition: opacity 0.3s ease-in-out; /* Add animation */
-            visibility: hidden; /* Initially hidden */
-            opacity: 0; /* Initially transparent */
-        }
-
-        .indicator.show {
-            visibility: visible; /* Make it visible */
-            opacity: 1; /* Fade in */
-        }
-
-        .indicator a {
-            text-decoration: none;
-            color: #fff; /* White text color */
-            padding: 0.5rem 1rem;
-            background-color: #0A192F; /* Dark navy blue background color */
-            border-radius: 0.5rem;
-            transition: background-color 0.3s ease;
-        }
-
-        .indicator a:hover {
-            background-color: #3A506B; /* Darker shade of navy blue on hover */
-        }
-
-        header {
-            background-color: #2c3e50;
-        }
-        
-        /* Badge styles */
-        .badge {
-            display: inline-block;
-            padding: 0.5rem 1rem;
-            margin-right: 0.5rem;
-            margin-bottom: 0.5rem;
-            color: #fff;
-            border-radius: 0.5rem;
-            font-size: 0.875rem;
-        }
-
-        /* Badge colors */
-        .badge-python { background-color: #3572A5; }
-        .badge-js { background-color: #F0DB4F; }
-        .badge-git { background-color: #F05033; }
-        .badge-sql { background-color: #4169E1; }
-        .badge-data { background-color: #1E90FF; }
-        .badge-pandas { background-color: #F4A460; }
-        .badge-numpy { background-color: #013220; }
-        .badge-ai { background-color: #FF1493; }
-        .badge-ml { background-color: #FF6347; }
-        .badge-node { background-color: #68A063; }
-        .badge-react { background-color: #61DAFB; }
-        .badge-htmlcss { background-color: #DC143C; }
-        .badge-jupyter { background-color: #DA70D6; }
-        .badge-next { background-color: #000000; }
-        .badge-tailwind { background-color: #38B2AC; }
-        .badge-docker { background-color: #2496ED; }
-        .badge-mongodb { background-color: #4DB33D; }
-        .badge-java { background-color: #007396; }
-        .badge-php { background-color: #777BB4; }
-        .badge-mysql { background-color: #4479A1; }
-        .badge-django { background-color: #092E20; }
-        .badge-flask { background-color: #000000; }
-        .badge-angular { background-color: #DD0031; }
-        .badge-spring { background-color: #6DB33F; }
-        .badge-rails { background-color: #CC0000; }
-        .badge-vue { background-color: #4FC08D; }
-        .badge-laravel { background-color: #FF2D20; }
-        .badge-codeigniter { background-color: #EE4329; }
-        .badge-api { background-color: #FF6C37; }
-        .badge-database { background-color: #993399; }
-        .badge-ajax { background-color: #5A8DEE; }
-        .badge-oop { background-color: #FFD700; }
-        .badge-jquery { background-color: #0769AD; }
-        .badge-r { background-color: #276DC3; }
-        .badge-rstudio { background-color: #75AADB; }
-        .badge-bigdata { background-color: #FFA500; }
-        .badge-tools { background-color: #607D8B; }
-
-        /* Custom badge colors */
-        .badge-other { background-color: #8B008B; }
-        .badge-other1 { background-color: #FF8C00; } /* Different shade of orange */
-        .badge-other2 { background-color: #FF6347; } /* Same color as ML */
-        .badge-other3 { background-color: #ADFF2F; } /* Yellow-green color */
-
-        /* Scroll-to-top button */
-        .scroll-to-top {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            background-color: #2c3e50;
-            color: #fff;
-            border: none;
-            border-radius: 50%;
-            width: 40px;
-            height: 40px;
-            font-size: 1.5rem;
-            cursor: pointer;
-            display: none;
-        }
-        .scroll-to-top:hover {
-            background-color: #34495e;
-        }
-        /* Social icons */
-        .social-icon {
-            font-size: 1.5rem;
-            color: #fff;
-            transition: color 0.3s ease;
-            margin-right: 1rem;
-            position: relative;
-        }
-        .social-icon:hover {
-            color: #1e272e;
-        }
-        .contact-info {
-            display: none;
-            transition: opacity 0.3s ease;
-            position: absolute;
-            top: calc(100% + 0.25rem);
-            left: 50%;
-            transform: translateX(-50%);
-            background-color: rgba(0, 0, 0, 0.8);
-            color: #fff;
-            padding: 0.25rem 0.5rem;
-            border-radius: 0.5rem;
-            font-size: 0.75rem;
-        }
-        .social-icon:hover .contact-info {
-            display: block;
-        }
-        @media screen and (max-width: 768px) {
-            /* Styles for screens smaller than 768px */
-            .container {
-                width: 90%; /* Adjust container width for smaller screens */
-            }
-            /* Adjust other styles as needed */
-        }
-
-        @media screen and (max-width: 576px) {
-            /* Styles for screens smaller than 576px */
-            .social-icon {
-                font-size: 1rem; /* Decrease icon size for smaller screens */
-            }
-            /* Adjust other styles as needed */
-        }
-
-    </style>
+    <link rel="stylesheet" href="./asset/css/custom.css">
 </head>
 <body class="bg-white font-sans">
 
@@ -310,139 +155,109 @@
 
     <!-- Projects Section -->
     <section id="projects" class="container mx-auto py-8">
-        <h2 class="text-2xl font-bold mb-4 text-center">Projects</h2>
-        <p class="mt-2 text-lg leading-8 text-gray-600 text-center">
-        A showcase of my backend development expertise across various industries.
-        </p>
-        <div class="mx-auto mt-10 grid max-w-6xl grid-cols-1 gap-x-8 gap-y-16 border-t border-gray-200 pt-10 sm:grid-cols-2 lg:grid-cols-3">
+        <h2 class="text-3xl font-bold mb-6 text-center">Projects</h2>
+        <p class="text-lg text-gray-600 text-center mb-8">Explore my backend development contributions in various tech stacks.</p>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
     
-        <!-- E-commerce Platforms -->
-        <div class="col-span-full">
-            <h3 class="text-xl font-semibold mb-4">E-commerce Platforms</h3>
-        </div>
-        <div class="bg-white rounded-lg border hover:shadow-lg p-6">
-            <h4 class="text-lg font-semibold mb-2">Abaya Al Samir</h4>
-            <p class="text-gray-700 mb-4">
-            An elegant online store for Islamic fashion. Integrated with secure payment gateways and order tracking.
-            </p>
-            <p class="text-gray-600 text-sm">Tech Stack: Laravel, MySQL, RESTful APIs</p>
-            <a href="https://abayaalsamir.com/" target="_blank" class="text-blue-500 hover:underline">View Project</a>
-        </div>
-        <div class="bg-white rounded-lg border hover:shadow-lg p-6">
-            <h4 class="text-lg font-semibold mb-2">Alifa Online</h4>
-            <p class="text-gray-700 mb-4">
-            A versatile e-commerce platform offering a wide range of products, focusing on user-friendly backend management.
-            </p>
-            <p class="text-gray-600 text-sm">Tech Stack: Laravel, JavaScript, Backend Optimization</p>
-            <a href="https://alifaonline.com/" target="_blank" class="text-blue-500 hover:underline">View Project</a>
-        </div>
-        <!-- Repeat for other e-commerce projects -->
+            <!-- E-commerce Project -->
+            <div class="bg-gray-100 rounded-lg border border-gray-300 hover:shadow-lg p-6 transition-shadow duration-300">
+                <h3 class="text-xl font-semibold mb-2">E-commerce Platforms</h3>
+                <p class="text-sm text-gray-700 mb-4">Developed multiple e-commerce sites focusing on scalability and performance.</p>
+                <div class="mb-4">
+                    <span class="badge badge-skill badge-laravel">Laravel</span>
+                    <span class="badge badge-skill badge-php">PHP</span>
+                    <span class="badge badge-skill badge-sql">SQL</span>
+                    <span class="badge badge-skill badge-mysql">MySQL</span>
+                    <span class="badge badge-skill badge-api">API Development</span>
+                </div>
+                <div class="flex flex-wrap gap-2">
+                    <a href="https://abayaalsamir.com/" target="_blank" class="text-blue-500 hover:underline">Abaya Al Samir</a>|
+                    <a href="https://alifaonline.com/" target="_blank" class="text-blue-500 hover:underline">Alifa Online</a>|
+                    <a href="https://babyblueorpinkbird.com/" target="_blank" class="text-blue-500 hover:underline">Baby Blue or Pink Bird</a>|
+                    <a href="https://chowdhuryelectronics.com.bd/" target="_blank" class="text-blue-500 hover:underline">Chowdhury Electronics</a>|
+                    <a href="https://leafs.com.bd/" target="_blank" class="text-blue-500 hover:underline">Leafs</a>|
+                    <a href="https://mahmudmart.com.bd/" target="_blank" class="text-blue-500 hover:underline">Mahmud Mart</a>|
+                    <a href="https://autometica.net/" target="_blank" class="text-blue-500 hover:underline">Autometica</a>|
+                    <a href="https://durbiin.com/" target="_blank" class="text-blue-500 hover:underline">Durbiin</a>
+                </div>
+            </div>
     
-        <!-- Websites -->
-        <div class="col-span-full">
-            <h3 class="text-xl font-semibold mb-4">Corporate Websites</h3>
-        </div>
-        <div class="bg-white rounded-lg border hover:shadow-lg p-6">
-            <h4 class="text-lg font-semibold mb-2">Pollux Chemicals Ltd</h4>
-            <p class="text-gray-700 mb-4">
-            A corporate website showcasing chemical products with an admin panel for easy content management.
-            </p>
-            <p class="text-gray-600 text-sm">Tech Stack: Laravel, Admin Panel Development</p>
-            <a href="https://polluxchemicalsltd.com/" target="_blank" class="text-blue-500 hover:underline">View Project</a>
-        </div>
-        <!-- Repeat for other websites -->
+            <!-- Corporate Websites -->
+            <div class="bg-gray-100 rounded-lg border border-gray-300 hover:shadow-lg p-6 transition-shadow duration-300">
+                <h3 class="text-xl font-semibold mb-2">Corporate Websites</h3>
+                <p class="text-sm text-gray-700 mb-4">Built robust backend systems for corporate websites.</p>
+                <div class="mb-4">
+                    <span class="badge badge-skill badge-laravel">Laravel</span>
+                    <span class="badge badge-skill badge-php">PHP</span>
+                    <span class="badge badge-skill badge-sql">SQL</span>
+                    <span class="badge badge-skill badge-mysql">MySQL</span>
+                </div>
+                <div class="flex flex-wrap gap-2">
+                    <a href="https://polluxchemicalsltd.com/" target="_blank" class="text-blue-500 hover:underline">Pollux Chemicals</a>|
+                    <a href="https://sinaratex.com/" target="_blank" class="text-blue-500 hover:underline">Sinaratex</a>|
+                    <a href="https://ecocolourchem.com/" target="_blank" class="text-blue-500 hover:underline">Eco Colour Chem</a>
+                </div>
+            </div>
     
-        <!-- Second-Hand Marketplace -->
-        <div class="col-span-full">
-            <h3 class="text-xl font-semibold mb-4">Second-Hand Marketplace</h3>
-        </div>
-        <div class="bg-white rounded-lg border hover:shadow-lg p-6">
-            <h4 class="text-lg font-semibold mb-2">2nd Hand Market BD</h4>
-            <p class="text-gray-700 mb-4">
-            A marketplace for buying and selling used products with features like product listing, filtering, and bidding.
-            </p>
-            <p class="text-gray-600 text-sm">Tech Stack: Laravel, MySQL, RESTful APIs</p>
-            <a href="https://2ndhandmarketbd.com/" target="_blank" class="text-blue-500 hover:underline">View Project</a>
-        </div>
+            <!-- Second Hand Marketplace -->
+            <div class="bg-gray-100 rounded-lg border border-gray-300 hover:shadow-lg p-6 transition-shadow duration-300">
+                <h3 class="text-xl font-semibold mb-2">2nd Hand Marketplace</h3>
+                <p class="text-sm text-gray-700 mb-4">Designed and implemented a marketplace for second-hand products.</p>
+                <div class="mb-4">
+                    <span class="badge badge-skill badge-laravel">Laravel</span>
+                    <span class="badge badge-skill badge-php">PHP</span>
+                    <span class="badge badge-skill badge-sql">SQL</span>
+                    <span class="badge badge-skill badge-mysql">MySQL</span>
+                </div>
+                <a href="https://2ndhandmarketbd.com/" target="_blank" class="text-blue-500 hover:underline">2nd Hand Market BD</a>
+            </div>
     
-        <!-- Hotel Management System -->
-        <div class="col-span-full">
-            <h3 class="text-xl font-semibold mb-4">Hotel Management System</h3>
-        </div>
-        <div class="bg-white rounded-lg border hover:shadow-lg p-6">
-            <h4 class="text-lg font-semibold mb-2">Hao Inn Hotel</h4>
-            <p class="text-gray-700 mb-4">
-            A system for managing hotel bookings, room availability, and billing. Backend automation for seamless operations.
-            </p>
-            <p class="text-gray-600 text-sm">Tech Stack: Laravel, MySQL, Backend Logic Automation</p>
-            <a href="https://haoinnhotel.com/" target="_blank" class="text-blue-500 hover:underline">View Project</a>
-        </div>
+            <!-- Hotel Management System -->
+            <div class="bg-gray-100 rounded-lg border border-gray-300 hover:shadow-lg p-6 transition-shadow duration-300">
+                <h3 class="text-xl font-semibold mb-2">Hotel Management System</h3>
+                <p class="text-sm text-gray-700 mb-4">Backend development for efficient hotel operations management.</p>
+                <div class="mb-4">
+                    <span class="badge badge-skill badge-laravel">Laravel</span>
+                    <span class="badge badge-skill badge-php">PHP</span>
+                    <span class="badge badge-skill badge-sql">SQL</span>
+                    <span class="badge badge-skill badge-mysql">MySQL</span>
+                </div>
+                <a href="https://haoinnhotel.com/" target="_blank" class="text-blue-500 hover:underline">Hao Inn Hotel</a>
+            </div>
     
-        <!-- LMS -->
-        <div class="col-span-full">
-            <h3 class="text-xl font-semibold mb-4">Learning Management System (LMS)</h3>
-        </div>
-        <div class="bg-white rounded-lg border hover:shadow-lg p-6">
-            <h4 class="text-lg font-semibold mb-2">Eco Colour LMS</h4>
-            <p class="text-gray-700 mb-4">
-            A comprehensive LMS for managing courses, users, and progress tracking. Built with dynamic and responsive design.
-            </p>
-            <p class="text-gray-600 text-sm">Tech Stack: Next.js, RESTful APIs, Backend Development</p>
-            <a href="https://lms.ecocolourchem.com/" target="_blank" class="text-blue-500 hover:underline">View Project</a>
-        </div>
+            <!-- Learning Management System -->
+            <div class="bg-gray-100 rounded-lg border border-gray-300 hover:shadow-lg p-6 transition-shadow duration-300">
+                <h3 class="text-xl font-semibold mb-2">Learning Management System</h3>
+                <p class="text-sm text-gray-700 mb-4">Built a modern LMS with Next.js for frontend, managed backend with Node.js and MySQL for data storage.</p>
+                <div class="mb-4">
+                    <span class="badge badge-skill badge-next">Next.js</span>
+                    <span class="badge badge-skill badge-node">Node.js</span>
+                    <span class="badge badge-skill badge-mysql">MySQL</span>
+                </div>
+                <a href="https://lms.ecocolourchem.com/" target="_blank" class="text-blue-500 hover:underline">LMS Eco Colour Chem</a>
+            </div>
     
-        <!-- POS -->
-        <div class="col-span-full">
-            <h3 class="text-xl font-semibold mb-4">Point of Sale (POS)</h3>
-        </div>
-        <div class="bg-white rounded-lg border hover:shadow-lg p-6">
-            <h4 class="text-lg font-semibold mb-2">Muaz POS</h4>
-            <p class="text-gray-700 mb-4">
-            A powerful POS system for retail businesses, including inventory tracking, barcode scanning, and reporting.
-            </p>
-            <p class="text-gray-600 text-sm">Tech Stack: Laravel, JavaScript, RESTful APIs</p>
-            <a href="https://demo.muaztradehouse.com/login" target="_blank" class="text-blue-500 hover:underline">Demo Login</a>
-        </div>
-    
-        <!-- Courier Service -->
-        <div class="col-span-full">
-            <h3 class="text-xl font-semibold mb-4">Courier Service</h3>
-        </div>
-        <div class="bg-white rounded-lg border hover:shadow-lg p-6">
-            <h4 class="text-lg font-semibold mb-2">Leeda Academy Courier</h4>
-            <p class="text-gray-700 mb-4">
-            A courier service system for managing deliveries, tracking, and customer notifications.
-            </p>
-            <p class="text-gray-600 text-sm">Tech Stack: Laravel, Notification Systems</p>
-            <a href="https://leedaacademy.com/" target="_blank" class="text-blue-500 hover:underline">View Project</a>
-        </div>
-    
-        <!-- ERP -->
-        <div class="col-span-full">
-            <h3 class="text-xl font-semibold mb-4">Enterprise Resource Planning (ERP)</h3>
-        </div>
-        <div class="bg-white rounded-lg border hover:shadow-lg p-6">
-            <h4 class="text-lg font-semibold mb-2">Denim Destiny Accounts</h4>
-            <p class="text-gray-700 mb-4">
-            A robust ERP solution for managing accounts, including financial reporting and ledger management.
-            </p>
-            <p class="text-gray-600 text-sm">Tech Stack: Laravel, MySQL, Recursive Data Handling</p>
-            <a href="https://accounts.denim-destiny.com/" target="_blank" class="text-blue-500 hover:underline">Demo Login</a>
-        </div>
-    
-        <!-- School Management Software -->
-        <div class="col-span-full">
-            <h3 class="text-xl font-semibold mb-4">School Management Software</h3>
-        </div>
-        <div class="bg-white rounded-lg border hover:shadow-lg p-6">
-            <h4 class="text-lg font-semibold mb-2">NCA School Management</h4>
-            <p class="text-gray-700 mb-4">
-            A complete solution for managing student records, attendance, and fee structures.
-            </p>
-            <p class="text-gray-600 text-sm">Tech Stack: CodeIgniter, MySQL, Admin Panel Development</p>
-            <a href="https://demo.ncabd.com/" target="_blank" class="text-blue-500 hover:underline">Demo</a>
-        </div>
-    
+            <!-- Specialized Systems -->
+            <div class="bg-gray-100 rounded-lg border border-gray-300 hover:shadow-lg p-6 transition-shadow duration-300">
+                <h3 class="text-xl font-semibold mb-2">Specialized Systems</h3>
+                <p class="text-sm text-gray-700 mb-4">From POS to ERP, backend solutions for various business needs.</p>
+                <div class="mb-4">
+                    <span class="badge badge-skill badge-laravel">Laravel</span>
+                    <span class="badge badge-skill badge-php">PHP</span>
+                    <span class="badge badge-skill badge-codeigniter">CodeIgniter</span>
+                    <span class="badge badge-skill badge-sql">SQL</span>
+                    <span class="badge badge-skill badge-mysql">MySQL</span>
+                </div>
+                <div class="flex flex-wrap gap-2">
+                    <a href="https://demo.muaztradehouse.com/login" target="_blank" class="text-blue-500 hover:underline">POS System</a>
+                    <span class="text-sm">(Login: admin/1234####)</span>|
+                    <a href="https://leedaacademy.com/" target="_blank" class="text-blue-500 hover:underline">Courier Service</a>|
+                    <a href="https://accounts.denim-destiny.com/" target="_blank" class="text-blue-500 hover:underline">ERP System</a>
+                    <span class="text-sm">(Login: admin@gmail.com/12345678)</span>|
+                    <a href="https://demo.ncabd.com/" target="_blank" class="text-blue-500 hover:underline">School Management</a>
+                    <span class="text-sm">(Login: demo_admin/NextPage@2020)</span>
+                </div>
+            </div>
         </div>
     </section>
   
@@ -450,7 +265,7 @@
     <!-- Work Section -->
     <section id="work" class="container mx-auto py-8">
         <h2 class="text-2xl font-bold mb-4">My Work Experience</h2>
-        <p class="mt-2 text-lg leading-8 text-gray-600">Learn how to grow your business with our expert advice.</p>
+        <p class="mt-2 text-lg leading-8 text-gray-600">Transforming challenges into opportunities with innovative backend solutions.</p>
         <div class="mx-auto mt-10 max-w-2xl border-t border-gray-200 pt-10 sm:pt-16 lg:mx-0 lg:max-w-none">
             <!-- Next Page Technology Ltd. -->
             <div class="bg-white p-6 mb-4">
@@ -519,7 +334,7 @@
     <!-- Licenses & Certifications Section -->
     <section id="licenses" class="container mx-auto py-8">
         <h2 class="text-2xl font-bold mb-4">Licenses & Certifications</h2>
-        <p class="mt-2 text-lg leading-8 text-gray-600">Learn how to grow your business with our expert advice.</p>
+        <p class="mt-2 text-lg leading-8 text-gray-600">Validating expertise and commitment to excellence in technology.</p>
         <div class="mx-auto mt-10 grid max-w-2xl grid-cols-1 gap-x-8 gap-y-16 border-t border-gray-200 pt-10 sm:pt-16 lg:mx-0 lg:max-w-none lg:grid-cols-3">
             <!-- Certification Card: Python for Data Science, AI & Development -->
             <div class="bg-white rounded-lg border hover:shadow-md p-6 mb-8">
