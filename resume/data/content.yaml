@@ -1,0 +1,126 @@
+BasicInfo:
+  FirstName: Akram
+  LastName: Hossain
+  Photo: img/akram.jpeg
+  Contacts:
+    - Icon: fas fa-phone
+      Info: +88 017 010 61957
+    - Icon: fas fa-envelope
+      Info: akramhossainrabbi@outlook.com
+    - Icon: fas fa-globe
+      Info: <a class="contact__link" href="https://akramhossainrabbi.github.io" target="_blank">akramhossainrabbi.github.io</a>
+    - Icon: fas fa-map-marker-alt
+      Info: Dhaka, Bangladesh
+
+Profile: I'm a Backend Maestro with a knack for crafting robust, scalable systems that power the digital world. I thrive on turning complex problems into elegant, efficient solutions. Known as the 'glue' in team settings, I naturally take charge, organizing workflows and driving projects forward with a blend of creativity and meticulous attention to detail.
+
+Experience:
+  - Employer: Next Page Technology Ltd.
+    Place: Dhaka, Bangladesh
+    Positions:
+      - Title: Senior Software Developer
+        Date: Nov 2024 - Present
+        Details:
+          - Lead in designing, developing, and maintaining high-quality software, focusing on architecture and full-stack development.
+          - Mentor teams, solve complex problems, and act as a technical expert, ensuring best practices and code quality.
+        Badges: ['Software Architecture', 'Database Design', 'Full-Stack Development', 'Laravel', 'React.js', 'Node.js', 'PHP', 'SQL']
+      - Title: Back End Developer
+        Date: Jul 2022 - Nov 2024
+        Details:
+          - Crafted robust server-side applications and databases, emphasizing performance, security, and scalability.
+          - Collaborated with cross-functional teams to integrate APIs, optimize processes, and lead junior developers.
+        Badges: ['Laravel', 'CodeIgniter','React.js', 'Node.js', 'PHP', 'Python', 'JavaScript', 'Agile Methodologies', 'MySQL', 'API Development', 'Database Design']
+  - Employer: MH IT Bangladesh
+    Place: Dhaka, Bangladesh
+    Positions:
+      - Title: Full Stack Developer
+        Date: Nov 2021 - Jun 2022
+        Details:
+          - Developed comprehensive web applications, managing both front-end and back-end for enhanced user experience.
+          - Utilized JavaScript and Agile methodologies to implement features, enhance performance, and uphold code quality standards.
+        Badges: ['Laravel', 'CodeIgniter', 'PHP', 'JavaScript', 'Agile Methodologies', 'HTML/CSS']
+  - Employer: Online Network Engineering Limited
+    Place: Dhaka, Bangladesh
+    Positions:
+      - Title: Web Application Developer
+        Date: Jan 2019 - Dec 2019
+        Details:
+          - Contributed to the lifecycle of web applications, from design to maintenance, gaining expertise in both front-end and back-end.
+          - Worked with senior developers to debug, optimize, and implement new features, fostering growth in technical skills.
+        Badges: ['Laravel', 'JavaScript', 'Agile Methodologies', 'HTML/CSS', 'SQL', 'PHP']
+
+Education:
+  - Course: MSc in Applied Statistics and Data Science
+    Place: Jahangirnagar University
+    Date: Nov 2021 - Nov 2022
+    Details: Specialised in Big Data and Data Science
+
+References:
+  - Name: Sajedul Islam
+    Relation: CTO at Next Page Technology Ltd.
+    Contacts:
+    - Icon: fas fa-phone
+      Info: +88 017 233 31925
+    - Icon: fas fa-envelope
+      Info: isajid07@gmail.com
+    - Icon: fas fa-map-marker-alt
+      Info: Dhaka, Bangladesh
+  - Name: Amiruzzaman Munna
+    Relation: Co-Worker at ONE Limited
+    Contacts:
+    - Icon: fas fa-phone
+      Info: +88 017 872 84068
+    - Icon: fas fa-envelope
+      Info: munna.ak17@gmail.com
+    - Icon: fas fa-map-marker-alt
+      Info: Gazipur, Bangladesh
+
+
+Skills:
+  - Family: Programming
+    Items:
+      - PHP
+      - Python
+      - HTML
+      - CSS
+      - Javascript
+      - SQL
+      - Bash
+  - Family: Frameworks
+    Items:
+      - Laravel
+      - CodeIgniter
+      - Django
+      - Flask
+      - React
+      - Next
+  - Family: Developer Tools
+    Items:
+      - Git
+      - Docker
+      - Jenkins
+      - AWS
+  - Family: Data Science
+    Items:
+      - Pandas
+      - NumPy
+      - SciPy
+      - Matplotlib
+      - Seaborn
+      - Scikit-learn
+      - TensorFlow
+      - PyTorch
+
+Languages:
+  - Name: Bangla
+    Level: Native
+  - Name: English
+    Level: Fluent
+
+Interests:
+  - Reading
+  - Travelling
+  - Eating
+  - Watching Movies
+  - Coding
+  - Sleeping

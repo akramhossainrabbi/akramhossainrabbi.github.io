@@ -1,0 +1,18 @@
+.interests {
+    display: block;
+    -moz-column-count: 2;
+    column-count: 2;
+    width: 100%;
+
+    &__item {
+        display: flex;
+        justify-content: space-between;
+        white-space: nowrap; // Prevent text wrapping
+        overflow: hidden; // Hide overflow if content exceeds container
+        text-overflow: ellipsis; // Add ellipsis for overflow text
+    }
+
+    &__item:nth-child(n+4) {
+        text-align: left;
+    }
+}
