@@ -461,7 +461,9 @@ export default function Portfolio() {
       <footer className="border-t py-8">
         <div className="container">
           <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
-            <div className="text-sm text-muted-foreground">© 2024 Akram Hossain. All rights reserved.</div>
+            <div className="text-sm text-muted-foreground">
+              © 2024 - {new Date().getFullYear()} Akram Hossain. All rights reserved.
+            </div>
             <div className="flex items-center space-x-6">
               <Link
                 href="https://github.com/akramhossainrabbi"
