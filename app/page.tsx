@@ -38,7 +38,7 @@ export default function Portfolio() {
       <section className="container py-24 md:py-32">
         <div className="flex flex-col items-center text-center space-y-8">
           <div className="space-y-4">
-            <h1 className="text-4xl md:text-6xl font-bold tracking-tight">Senior Laravel Developer</h1>
+            <h1 className="text-4xl md:text-6xl font-bold tracking-tight">Laravel Developer</h1>
             <p className="text-xl text-muted-foreground max-w-2xl">
               Crafting robust, scalable web applications with Laravel. Passionate about clean code, modern architecture,
               and delivering exceptional user experiences.
@@ -66,7 +66,7 @@ export default function Portfolio() {
               <Linkedin className="h-6 w-6" />
             </Link>
             <Link
-              href="mailto:akram@example.com"
+              href="mailto:akramhossainrabbi@outlook.com"
               className="text-muted-foreground hover:text-foreground transition-colors"
             >
               <Mail className="h-6 w-6" />
@@ -159,7 +159,6 @@ export default function Portfolio() {
                   </CardHeader>
                   <CardContent>
                     <div className="flex flex-wrap gap-2">
-                      <Badge variant="secondary">Vue.js</Badge>
                       <Badge variant="secondary">React</Badge>
                       <Badge variant="secondary">Alpine.js</Badge>
                       <Badge variant="secondary">Tailwind CSS</Badge>
@@ -199,7 +198,7 @@ export default function Portfolio() {
           <div className="max-w-4xl mx-auto space-y-8">
             <Card>
               <CardHeader>
-                <div className="flex justify-between items-start">
+                <div className="flex justify-between items-start text-left">
                   <div>
                     <CardTitle>Back End Developer</CardTitle>
                     <CardDescription className="text-lg">Next Page Technology Ltd.</CardDescription>
@@ -209,20 +208,17 @@ export default function Portfolio() {
                 </div>
               </CardHeader>
               <CardContent>
-                <ul className="space-y-2 text-muted-foreground">
+                <ul className="space-y-2 text-muted-foreground pl-5 text-left">
                   <li>• Developed and maintained scalable web applications using Laravel and modern PHP practices</li>
-                  <li>• Built responsive frontend interfaces with Vue.js, React.js, and Next.js frameworks</li>
+                  <li>• Built responsive frontend interfaces with React.js, and Next.js frameworks</li>
                   <li>• Implemented RESTful APIs and integrated third-party services for enhanced functionality</li>
-                  <li>
-                    • Collaborated with cross-functional teams using Git for version control and project management
-                  </li>
+                  <li>• Collaborated with cross-functional teams using Git for version control and project management</li>
                   <li>• Optimized application performance and implemented best practices for code quality</li>
                   <li>• Worked with Python for data processing and automation tasks</li>
                 </ul>
                 <div className="flex flex-wrap gap-2 mt-4">
                   <Badge variant="outline">PHP</Badge>
                   <Badge variant="outline">Laravel</Badge>
-                  <Badge variant="outline">Vue.js</Badge>
                   <Badge variant="outline">React.js</Badge>
                   <Badge variant="outline">Next.js</Badge>
                   <Badge variant="outline">Node.js</Badge>
@@ -236,7 +232,7 @@ export default function Portfolio() {
 
             <Card>
               <CardHeader>
-                <div className="flex justify-between items-start">
+                <div className="flex justify-between items-start text-left">
                   <div>
                     <CardTitle>Full Stack Developer</CardTitle>
                     <CardDescription className="text-lg">MH IT Bangladesh</CardDescription>
@@ -246,7 +242,7 @@ export default function Portfolio() {
                 </div>
               </CardHeader>
               <CardContent>
-                <ul className="space-y-2 text-muted-foreground">
+                <ul className="space-y-2 text-muted-foreground pl-5 text-left">
                   <li>• Designed and developed full-stack web applications using PHP and Laravel framework</li>
                   <li>• Created dynamic user interfaces and implemented responsive design principles</li>
                   <li>• Built custom content management systems and e-commerce solutions</li>
@@ -267,7 +263,7 @@ export default function Portfolio() {
 
             <Card>
               <CardHeader>
-                <div className="flex justify-between items-start">
+                <div className="flex justify-between items-start text-left">
                   <div>
                     <CardTitle>Web Application Developer</CardTitle>
                     <CardDescription className="text-lg">Online Network Engineering Limited</CardDescription>
@@ -277,7 +273,7 @@ export default function Portfolio() {
                 </div>
               </CardHeader>
               <CardContent>
-                <ul className="space-y-2 text-muted-foreground">
+                <ul className="space-y-2 text-muted-foreground pl-5 text-left">
                   <li>• Developed web applications using PHP and Laravel framework from ground up</li>
                   <li>• Implemented user authentication systems and role-based access control</li>
                   <li>• Created admin dashboards and reporting modules for business operations</li>
@@ -299,133 +295,416 @@ export default function Portfolio() {
         </div>
       </section>
 
-      {/* Projects Section */}
-      <section id="projects" className="container py-24">
-        <div className="text-center space-y-8">
-          <h2 className="text-3xl font-bold">Featured Projects</h2>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <Card className="group hover:shadow-lg transition-shadow">
-              <CardHeader>
-                <div className="aspect-video bg-muted rounded-md mb-4 flex items-center justify-center">
-                  <Image
-                    src="/placeholder.svg?height=200&width=300"
-                    alt="E-commerce Platform"
-                    width={300}
-                    height={200}
-                    className="rounded-md"
-                  />
-                </div>
-                <CardTitle>E-commerce Platform</CardTitle>
-                <CardDescription>
-                  Full-featured e-commerce solution built with Laravel, featuring payment integration, inventory
-                  management, and admin dashboard.
-                </CardDescription>
-              </CardHeader>
-              <CardContent>
-                <div className="flex flex-wrap gap-2 mb-4">
-                  <Badge variant="outline">Laravel</Badge>
-                  <Badge variant="outline">Vue.js</Badge>
-                  <Badge variant="outline">MySQL</Badge>
-                  <Badge variant="outline">Stripe</Badge>
-                </div>
-                <div className="flex gap-2">
-                  <Button size="sm" variant="outline" asChild>
-                    <Link href="https://github.com/akramhossainrabbi/ecommerce">
-                      <Github className="h-4 w-4 mr-2" />
-                      Code
-                    </Link>
-                  </Button>
-                  <Button size="sm" asChild>
-                    <Link href="https://demo-ecommerce.example.com">
-                      <ExternalLink className="h-4 w-4 mr-2" />
-                      Live Demo
-                    </Link>
-                  </Button>
-                </div>
-              </CardContent>
-            </Card>
+      {/* Projects Section - Comprehensive Portfolio */}
+      <section id="projects" className="bg-muted/50 py-24">
+        <div className="container">
+          <div className="text-center space-y-8">
+            <h2 className="text-3xl font-bold">Projects</h2>
+            <p className="text-muted-foreground max-w-2xl mx-auto">
+              Explore my backend development contributions across various tech stacks and industries.
+            </p>
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {/* ERP System */}
+              <Card className="group hover:shadow-lg transition-shadow">
+                <CardHeader>
+                  <div className="aspect-video bg-gradient-to-br from-purple-500 to-indigo-600 rounded-md mb-4 flex items-center justify-center">
+                    <Database className="h-12 w-12 text-white" />
+                  </div>
+                  <CardTitle>ERP System</CardTitle>
+                  <CardDescription>
+                    Created an enterprise resource planning system for comprehensive business management with advanced
+                    reporting and analytics.
+                  </CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <div className="flex flex-wrap gap-2 mb-4">
+                    <Badge variant="outline">Laravel</Badge>
+                    <Badge variant="outline">PHP</Badge>
+                    <Badge variant="outline">JavaScript</Badge>
+                    <Badge variant="outline">MySQL</Badge>
+                  </div>
+                  <div className="space-y-2">
+                    <Button size="sm" asChild className="w-full">
+                      <Link href="https://accounts.denim-destiny.com/" target="_blank">
+                        <Globe className="h-4 w-4 mr-2" />
+                        View ERP System
+                      </Link>
+                    </Button>
+                    <p className="text-xs text-muted-foreground text-center">Demo Login: admin@gmail.com / 12345678</p>
+                  </div>
+                </CardContent>
+              </Card>
 
-            <Card className="group hover:shadow-lg transition-shadow">
-              <CardHeader>
-                <div className="aspect-video bg-muted rounded-md mb-4 flex items-center justify-center">
-                  <Image
-                    src="/placeholder.svg?height=200&width=300"
-                    alt="Task Management API"
-                    width={300}
-                    height={200}
-                    className="rounded-md"
-                  />
-                </div>
-                <CardTitle>Task Management API</CardTitle>
-                <CardDescription>
-                  RESTful API for task management with team collaboration features, real-time notifications, and
-                  comprehensive reporting.
-                </CardDescription>
-              </CardHeader>
-              <CardContent>
-                <div className="flex flex-wrap gap-2 mb-4">
-                  <Badge variant="outline">Laravel</Badge>
-                  <Badge variant="outline">Redis</Badge>
-                  <Badge variant="outline">WebSockets</Badge>
-                  <Badge variant="outline">JWT</Badge>
-                </div>
-                <div className="flex gap-2">
-                  <Button size="sm" variant="outline" asChild>
-                    <Link href="https://github.com/akramhossainrabbi/task-api">
-                      <Github className="h-4 w-4 mr-2" />
-                      Code
-                    </Link>
-                  </Button>
-                  <Button size="sm" asChild>
-                    <Link href="https://api-docs.example.com">
-                      <ExternalLink className="h-4 w-4 mr-2" />
-                      API Docs
-                    </Link>
-                  </Button>
-                </div>
-              </CardContent>
-            </Card>
+              {/* POS System */}
+              <Card className="group hover:shadow-lg transition-shadow">
+                <CardHeader>
+                  <div className="aspect-video bg-gradient-to-br from-green-500 to-teal-600 rounded-md mb-4 flex items-center justify-center">
+                    <Server className="h-12 w-12 text-white" />
+                  </div>
+                  <CardTitle>POS System</CardTitle>
+                  <CardDescription>
+                    Developed a comprehensive point-of-sale solution for streamlined transactions and inventory
+                    management.
+                  </CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <div className="flex flex-wrap gap-2 mb-4">
+                    <Badge variant="outline">Laravel</Badge>
+                    <Badge variant="outline">PHP</Badge>
+                    <Badge variant="outline">JavaScript</Badge>
+                    <Badge variant="outline">MySQL</Badge>
+                  </div>
+                  <div className="space-y-2">
+                    <Button size="sm" asChild className="w-full">
+                      <Link href="https://ssp.nextpagetl.com/" target="_blank">
+                        <Globe className="h-4 w-4 mr-2" />
+                        View POS System
+                      </Link>
+                    </Button>
+                    <p className="text-xs text-muted-foreground text-center">Advanced point-of-sale solution</p>
+                  </div>
+                </CardContent>
+              </Card>
 
-            <Card className="group hover:shadow-lg transition-shadow">
-              <CardHeader>
-                <div className="aspect-video bg-muted rounded-md mb-4 flex items-center justify-center">
-                  <Image
-                    src="/placeholder.svg?height=200&width=300"
-                    alt="CMS Platform"
-                    width={300}
-                    height={200}
-                    className="rounded-md"
-                  />
-                </div>
-                <CardTitle>Content Management System</CardTitle>
-                <CardDescription>
-                  Flexible CMS with multi-tenancy support, custom field types, and advanced user role management for
-                  enterprise clients.
-                </CardDescription>
-              </CardHeader>
-              <CardContent>
-                <div className="flex flex-wrap gap-2 mb-4">
-                  <Badge variant="outline">Laravel</Badge>
-                  <Badge variant="outline">Livewire</Badge>
-                  <Badge variant="outline">PostgreSQL</Badge>
-                  <Badge variant="outline">AWS</Badge>
-                </div>
-                <div className="flex gap-2">
-                  <Button size="sm" variant="outline" asChild>
-                    <Link href="https://github.com/akramhossainrabbi/cms">
-                      <Github className="h-4 w-4 mr-2" />
-                      Code
+              {/* Hotel Management System */}
+              <Card className="group hover:shadow-lg transition-shadow">
+                <CardHeader>
+                  <div className="aspect-video bg-gradient-to-br from-blue-500 to-cyan-600 rounded-md mb-4 flex items-center justify-center">
+                    <Globe className="h-12 w-12 text-white" />
+                  </div>
+                  <CardTitle>Travel & Booking Management System</CardTitle>
+                  <CardDescription>
+                    Comprehensive travel management platform featuring hotel bookings, flight reservations, car rentals,
+                    and integrated travel services for complete trip planning.
+                  </CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <div className="flex flex-wrap gap-2 mb-4">
+                    <Badge variant="outline">Laravel</Badge>
+                    <Badge variant="outline">PHP</Badge>
+                    <Badge variant="outline">MySQL</Badge>
+                    <Badge variant="outline">API Integration</Badge>
+                    <Badge variant="outline">Payment Gateway</Badge>
+                  </div>
+                  <Button size="sm" asChild className="w-full">
+                    <Link href="https://booking360.nextpagetl.com/" target="_blank">
+                      <Globe className="h-4 w-4 mr-2" />
+                      View Booking Platform
                     </Link>
                   </Button>
-                  <Button size="sm" asChild>
-                    <Link href="https://cms-demo.example.com">
-                      <ExternalLink className="h-4 w-4 mr-2" />
-                      Live Demo
+                </CardContent>
+              </Card>
+
+              {/* Learning Management System */}
+              <Card className="group hover:shadow-lg transition-shadow">
+                <CardHeader>
+                  <div className="aspect-video bg-gradient-to-br from-orange-500 to-red-600 rounded-md mb-4 flex items-center justify-center">
+                    <Code className="h-12 w-12 text-white" />
+                  </div>
+                  <CardTitle>Learning Management System</CardTitle>
+                  <CardDescription>
+                    Built a modern LMS with Next.js frontend, managed backend with Node.js and MySQL for comprehensive
+                    educational platform.
+                  </CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <div className="flex flex-wrap gap-2 mb-4">
+                    <Badge variant="outline">Next.js</Badge>
+                    <Badge variant="outline">Node.js</Badge>
+                    <Badge variant="outline">MySQL</Badge>
+                    <Badge variant="outline">React</Badge>
+                  </div>
+                  <Button size="sm" asChild className="w-full">
+                    <Link href="https://thepolycube.com/" target="_blank">
+                      <Globe className="h-4 w-4 mr-2" />
+                      View LMS Platform
                     </Link>
                   </Button>
-                </div>
-              </CardContent>
-            </Card>
+                </CardContent>
+              </Card>
+
+              {/* E-commerce Platforms */}
+              <Card className="group hover:shadow-lg transition-shadow">
+                <CardHeader>
+                  <div className="aspect-video bg-gradient-to-br from-pink-500 to-rose-600 rounded-md mb-4 flex items-center justify-center">
+                    <Globe className="h-12 w-12 text-white" />
+                  </div>
+                  <CardTitle>E-commerce Platforms</CardTitle>
+                  <CardDescription>
+                    Developed multiple e-commerce sites focusing on scalability, performance, and seamless user
+                    experience across various industries.
+                  </CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <div className="flex flex-wrap gap-2 mb-4">
+                    <Badge variant="outline">Laravel</Badge>
+                    <Badge variant="outline">PHP</Badge>
+                    <Badge variant="outline">JavaScript</Badge>
+                    <Badge variant="outline">MySQL</Badge>
+                    <Badge variant="outline">API Development</Badge>
+                  </div>
+                  <div className="space-y-2 text-sm">
+                    <div className="grid grid-cols-2 gap-1">
+                      <Link href="https://abayaalsamir.com/" target="_blank" className="text-blue-600 hover:underline">
+                        Abaya Al Samir
+                      </Link>
+                      <Link href="https://alifaonline.com/" target="_blank" className="text-blue-600 hover:underline">
+                        Alifa Online
+                      </Link>
+                      <Link
+                        href="https://babyblueorpinkbird.com/"
+                        target="_blank"
+                        className="text-blue-600 hover:underline"
+                      >
+                        Baby Blue Bird
+                      </Link>
+                      <Link
+                        href="https://chowdhuryelectronics.com.bd/"
+                        target="_blank"
+                        className="text-blue-600 hover:underline"
+                      >
+                        Chowdhury Electronics
+                      </Link>
+                      <Link href="https://leafs.com.bd/" target="_blank" className="text-blue-600 hover:underline">
+                        Leafs
+                      </Link>
+                      <Link href="https://mahmudmart.com.bd/" target="_blank" className="text-blue-600 hover:underline">
+                        Mahmud Mart
+                      </Link>
+                      <Link href="https://autometica.net/" target="_blank" className="text-blue-600 hover:underline">
+                        Autometica
+                      </Link>
+                      <Link href="https://durbiin.com/" target="_blank" className="text-blue-600 hover:underline">
+                        Durbiin
+                      </Link>
+                    </div>
+                    <p className="text-xs text-muted-foreground text-center mt-2">8 Live E-commerce Platforms</p>
+                  </div>
+                </CardContent>
+              </Card>
+
+              {/* Corporate Websites */}
+              <Card className="group hover:shadow-lg transition-shadow">
+                <CardHeader>
+                  <div className="aspect-video bg-gradient-to-br from-indigo-500 to-purple-600 rounded-md mb-4 flex items-center justify-center">
+                    <Server className="h-12 w-12 text-white" />
+                  </div>
+                  <CardTitle>Corporate Websites</CardTitle>
+                  <CardDescription>
+                    Built robust backend systems for corporate websites with content management, SEO optimization, and
+                    business integration.
+                  </CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <div className="flex flex-wrap gap-2 mb-4">
+                    <Badge variant="outline">Laravel</Badge>
+                    <Badge variant="outline">PHP</Badge>
+                    <Badge variant="outline">JavaScript</Badge>
+                    <Badge variant="outline">MySQL</Badge>
+                  </div>
+                  <div className="space-y-2 text-sm">
+                    <Link
+                      href="https://polluxchemicalsltd.com/"
+                      target="_blank"
+                      className="block text-blue-600 hover:underline"
+                    >
+                      Pollux Chemicals Ltd →
+                    </Link>
+                    <Link href="https://sinaratex.com/" target="_blank" className="block text-blue-600 hover:underline">
+                      Sinaratex →
+                    </Link>
+                    <Link
+                      href="https://ecocolourchem.com/"
+                      target="_blank"
+                      className="block text-blue-600 hover:underline"
+                    >
+                      Eco Colour Chem →
+                    </Link>
+                  </div>
+                </CardContent>
+              </Card>
+
+              {/* 2nd Hand Marketplace */}
+              <Card className="group hover:shadow-lg transition-shadow">
+                <CardHeader>
+                  <div className="aspect-video bg-gradient-to-br from-teal-500 to-green-600 rounded-md mb-4 flex items-center justify-center">
+                    <Database className="h-12 w-12 text-white" />
+                  </div>
+                  <CardTitle>2nd Hand Marketplace</CardTitle>
+                  <CardDescription>
+                    Designed and implemented a comprehensive marketplace for second-hand products with advanced search
+                    and filtering capabilities.
+                  </CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <div className="flex flex-wrap gap-2 mb-4">
+                    <Badge variant="outline">Laravel</Badge>
+                    <Badge variant="outline">PHP</Badge>
+                    <Badge variant="outline">JavaScript</Badge>
+                    <Badge variant="outline">MySQL</Badge>
+                  </div>
+                  <Button size="sm" asChild className="w-full">
+                    <Link href="https://2ndhandmarketbd.com/" target="_blank">
+                      <Globe className="h-4 w-4 mr-2" />
+                      Visit Marketplace
+                    </Link>
+                  </Button>
+                </CardContent>
+              </Card>
+
+              {/* Matrimony Platform */}
+              <Card className="group hover:shadow-lg transition-shadow">
+                <CardHeader>
+                  <div className="aspect-video bg-gradient-to-br from-red-500 to-pink-600 rounded-md mb-4 flex items-center justify-center">
+                    <Globe className="h-12 w-12 text-white" />
+                  </div>
+                  <CardTitle>Matrimony Platform</CardTitle>
+                  <CardDescription>
+                    Developed a specialized matrimonial service with unique features like 'Most Match' compatibility
+                    system and custom package services.
+                  </CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <div className="flex flex-wrap gap-2 mb-4">
+                    <Badge variant="outline">Laravel</Badge>
+                    <Badge variant="outline">PHP</Badge>
+                    <Badge variant="outline">JavaScript</Badge>
+                    <Badge variant="outline">MySQL</Badge>
+                  </div>
+                  <Button size="sm" asChild className="w-full">
+                    <Link href="https://idealnikah.com/" target="_blank">
+                      <Globe className="h-4 w-4 mr-2" />
+                      Visit Ideal Nikah
+                    </Link>
+                  </Button>
+                </CardContent>
+              </Card>
+
+              {/* PMS System */}
+              <Card className="group hover:shadow-lg transition-shadow">
+                <CardHeader>
+                  <div className="aspect-video bg-gradient-to-br from-cyan-500 to-blue-600 rounded-md mb-4 flex items-center justify-center">
+                    <Database className="h-12 w-12 text-white" />
+                  </div>
+                  <CardTitle>Real Estate Management System</CardTitle>
+                  <CardDescription>
+                    Comprehensive real estate management solution for property listings, client management, sales
+                    tracking, and property portfolio management.
+                  </CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <div className="flex flex-wrap gap-2 mb-4">
+                    <Badge variant="outline">Laravel</Badge>
+                    <Badge variant="outline">PHP</Badge>
+                    <Badge variant="outline">JavaScript</Badge>
+                    <Badge variant="outline">MySQL</Badge>
+                  </div>
+                  <div className="space-y-2">
+                    <Button size="sm" asChild className="w-full">
+                      <Link href="https://formonic.nextpagetl.com/" target="_blank">
+                        <Globe className="h-4 w-4 mr-2" />
+                        View Real Estate System
+                      </Link>
+                    </Button>
+                    <p className="text-sm text-muted-foreground">
+                      Built for real estate agencies and property developers with automated lead management and property
+                      showcase features.
+                    </p>
+                  </div>
+                </CardContent>
+              </Card>
+
+              {/* VAT Software */}
+              <Card className="group hover:shadow-lg transition-shadow">
+                <CardHeader>
+                  <div className="aspect-video bg-gradient-to-br from-emerald-500 to-teal-600 rounded-md mb-4 flex items-center justify-center">
+                    <Server className="h-12 w-12 text-white" />
+                  </div>
+                  <CardTitle>VAT Management Software</CardTitle>
+                  <CardDescription>
+                    Specialized VAT calculation and compliance software for businesses to manage tax obligations and
+                    generate reports.
+                  </CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <div className="flex flex-wrap gap-2 mb-4">
+                    <Badge variant="outline">Laravel</Badge>
+                    <Badge variant="outline">PHP</Badge>
+                    <Badge variant="outline">React.js</Badge>
+                    <Badge variant="outline">MySQL</Badge>
+                    <Badge variant="outline">Tax Compliance</Badge>
+                  </div>
+                  <div className="space-y-2">
+                    <Button size="sm" asChild className="w-full">
+                      <Link href="https://nexvat.com/" target="_blank">
+                        <Globe className="h-4 w-4 mr-2" />
+                        View VAT Software
+                      </Link>
+                    </Button>
+                    <p className="text-sm text-muted-foreground">
+                      Automated VAT calculations, compliance reporting, and integration with accounting systems.
+                    </p>
+                  </div>
+                </CardContent>
+              </Card>
+
+              {/* Courier Service */}
+              <Card className="group hover:shadow-lg transition-shadow">
+                <CardHeader>
+                  <div className="aspect-video bg-gradient-to-br from-violet-500 to-purple-600 rounded-md mb-4 flex items-center justify-center">
+                    <Globe className="h-12 w-12 text-white" />
+                  </div>
+                  <CardTitle>Courier Management System</CardTitle>
+                  <CardDescription>
+                    Complete courier and delivery management solution with tracking, route optimization, and customer
+                    notifications.
+                  </CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <div className="flex flex-wrap gap-2 mb-4">
+                    <Badge variant="outline">Laravel</Badge>
+                    <Badge variant="outline">PHP</Badge>
+                    <Badge variant="outline">JavaScript</Badge>
+                    <Badge variant="outline">MySQL</Badge>
+                    <Badge variant="outline">API Integration</Badge>
+                  </div>
+                  <Button size="sm" asChild className="w-full">
+                    <Link href="https://ecommerce11.nextpagetl.com/" target="_blank">
+                      <Globe className="h-4 w-4 mr-2" />
+                      View Courier System
+                    </Link>
+                  </Button>
+                </CardContent>
+              </Card>
+
+              {/* School Management System */}
+              <Card className="group hover:shadow-lg transition-shadow">
+                <CardHeader>
+                  <div className="aspect-video bg-gradient-to-br from-amber-500 to-orange-600 rounded-md mb-4 flex items-center justify-center">
+                    <Code className="h-12 w-12 text-white" />
+                  </div>
+                  <CardTitle>School Management System</CardTitle>
+                  <CardDescription>
+                    Comprehensive educational institution management with student records, attendance tracking, and
+                    grade management.
+                  </CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <div className="flex flex-wrap gap-2 mb-4">
+                    <Badge variant="outline">CodeIgniter</Badge>
+                    <Badge variant="outline">PHP</Badge>
+                    <Badge variant="outline">MySQL</Badge>
+                    <Badge variant="outline">JavaScript</Badge>
+                  </div>
+                  <Button size="sm" asChild className="w-full">
+                    <Link href="https://demo.nextpagetl.com/" target="_blank">
+                      <Globe className="h-4 w-4 mr-2" />
+                      View School System
+                    </Link>
+                  </Button>
+                </CardContent>
+              </Card>
+            </div>
           </div>
         </div>
       </section>
@@ -441,7 +720,7 @@ export default function Portfolio() {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button size="lg" asChild>
-                <Link href="mailto:akram@example.com">
+                <Link href="mailto:akramhossainrabbi@outlook.com">
                   <Mail className="h-5 w-5 mr-2" />
                   Send Email
                 </Link>
@@ -478,7 +757,7 @@ export default function Portfolio() {
                 <Linkedin className="h-5 w-5" />
               </Link>
               <Link
-                href="mailto:akram@example.com"
+                href="mailto:akramhossainrabbi@outlook.com"
                 className="text-muted-foreground hover:text-foreground transition-colors"
               >
                 <Mail className="h-5 w-5" />
