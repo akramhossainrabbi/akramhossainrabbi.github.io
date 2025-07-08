@@ -4,30 +4,42 @@ import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Github, Linkedin, Mail, ExternalLink, Code, Database, Server, Globe } from "lucide-react"
-import Image from "next/image"
 import Link from "next/link"
 
+import { useEffect } from "react"
+
 export default function Portfolio() {
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      document.documentElement.style.scrollBehavior = "smooth"
+    }
+    return () => {
+      if (typeof window !== "undefined") {
+        document.documentElement.style.scrollBehavior = ""
+      }
+    }
+  }, [])
+
   return (
     <div className="min-h-screen bg-background">
       {/* Navigation */}
       <nav className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-        <div className="container flex h-16 items-center justify-between">
-          <div className="font-bold text-xl">Akram Hossain</div>
-          <div className="flex items-center space-x-6">
-            <Link href="#about" className="text-sm font-medium hover:text-primary transition-colors">
+        <div className="container flex flex-wrap h-auto min-h-[4rem] items-center justify-between py-2 gap-y-2">
+          <div className="font-bold text-xl w-full sm:w-auto text-center sm:text-left">Akram Hossain</div>
+          <div className="flex flex-wrap w-full sm:w-auto justify-center sm:justify-end gap-2 sm:gap-6 mt-2 sm:mt-0">
+            <Link href="#about" className="text-sm font-medium hover:text-primary transition-colors px-2 py-1">
               About
             </Link>
-            <Link href="#skills" className="text-sm font-medium hover:text-primary transition-colors">
+            <Link href="#skills" className="text-sm font-medium hover:text-primary transition-colors px-2 py-1">
               Skills
             </Link>
-            <Link href="#experience" className="text-sm font-medium hover:text-primary transition-colors">
+            <Link href="#experience" className="text-sm font-medium hover:text-primary transition-colors px-2 py-1">
               Experience
             </Link>
-            <Link href="#projects" className="text-sm font-medium hover:text-primary transition-colors">
+            <Link href="#projects" className="text-sm font-medium hover:text-primary transition-colors px-2 py-1">
               Projects
             </Link>
-            <Link href="#contact" className="text-sm font-medium hover:text-primary transition-colors">
+            <Link href="#contact" className="text-sm font-medium hover:text-primary transition-colors px-2 py-1">
               Contact
             </Link>
           </div>
@@ -35,24 +47,24 @@ export default function Portfolio() {
       </nav>
 
       {/* Hero Section */}
-      <section className="container py-24 md:py-32">
-        <div className="flex flex-col items-center text-center space-y-8">
+      <section className="container py-10 md:py-32">
+        <div className="flex flex-col items-center text-center space-y-8 px-2">
           <div className="space-y-4">
-            <h1 className="text-4xl md:text-6xl font-bold tracking-tight">Laravel Developer</h1>
-            <p className="text-xl text-muted-foreground max-w-2xl">
+            <h1 className="text-2xl sm:text-3xl md:text-6xl font-bold tracking-tight">Laravel Developer</h1>
+            <p className="text-sm sm:text-base md:text-xl text-muted-foreground max-w-2xl mx-auto">
               Crafting robust, scalable web applications with Laravel. Passionate about clean code, modern architecture,
               and delivering exceptional user experiences.
             </p>
           </div>
-          <div className="flex items-center space-x-4">
-            <Button size="lg" asChild>
+          <div className="flex flex-col sm:flex-row items-center gap-3 sm:gap-4 w-full justify-center">
+            <Button size="lg" asChild className="w-full sm:w-auto">
               <Link href="#projects">View My Work</Link>
             </Button>
-            <Button variant="outline" size="lg" asChild>
+            <Button variant="outline" size="lg" asChild className="w-full sm:w-auto">
               <Link href="#contact">Get In Touch</Link>
             </Button>
           </div>
-          <div className="flex items-center space-x-6">
+          <div className="flex items-center justify-center gap-6 w-full">
             <Link
               href="https://github.com/akramhossainrabbi"
               className="text-muted-foreground hover:text-foreground transition-colors"
@@ -76,53 +88,53 @@ export default function Portfolio() {
       </section>
 
       {/* About Section */}
-      <section id="about" className="container py-24">
-        <div className="max-w-3xl mx-auto text-center space-y-8">
-          <h2 className="text-3xl font-bold">About Me</h2>
-          <p className="text-lg text-muted-foreground leading-relaxed">
+      <section id="about" className="container py-10 md:py-24">
+        <div className="max-w-3xl mx-auto text-center space-y-8 px-2">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold">About Me</h2>
+          <p className="text-sm sm:text-base md:text-lg text-muted-foreground leading-relaxed">
             I'm a senior software developer with over 4 years of experience specializing in Laravel development. I have
             a passion for building scalable, maintainable applications and leading development teams to success. My
             expertise spans the entire web development stack, with a particular focus on backend architecture, API
             design, and database optimization.
           </p>
-          <div className="grid md:grid-cols-3 gap-8 pt-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 md:gap-8 pt-8">
             <div className="text-center space-y-2">
-              <Code className="h-12 w-12 mx-auto text-primary" />
-              <h3 className="font-semibold">Clean Code</h3>
-              <p className="text-sm text-muted-foreground">
+              <Code className="h-10 w-10 md:h-12 md:w-12 mx-auto text-primary" />
+              <h3 className="font-semibold text-base md:text-lg">Clean Code</h3>
+              <p className="text-xs sm:text-sm text-muted-foreground">
                 Writing maintainable, testable code following best practices
               </p>
             </div>
             <div className="text-center space-y-2">
-              <Server className="h-12 w-12 mx-auto text-primary" />
-              <h3 className="font-semibold">Architecture</h3>
-              <p className="text-sm text-muted-foreground">Designing scalable systems and robust backend solutions</p>
+              <Server className="h-10 w-10 md:h-12 md:w-12 mx-auto text-primary" />
+              <h3 className="font-semibold text-base md:text-lg">Architecture</h3>
+              <p className="text-xs sm:text-sm text-muted-foreground">Designing scalable systems and robust backend solutions</p>
             </div>
             <div className="text-center space-y-2">
-              <Database className="h-12 w-12 mx-auto text-primary" />
-              <h3 className="font-semibold">Performance</h3>
-              <p className="text-sm text-muted-foreground">Optimizing applications for speed and efficiency</p>
+              <Database className="h-10 w-10 md:h-12 md:w-12 mx-auto text-primary" />
+              <h3 className="font-semibold text-base md:text-lg">Performance</h3>
+              <p className="text-xs sm:text-sm text-muted-foreground">Optimizing applications for speed and efficiency</p>
             </div>
           </div>
         </div>
       </section>
 
       {/* Skills Section */}
-      <section id="skills" className="bg-muted/50 py-24">
+      <section id="skills" className="bg-muted/50 py-10 md:py-24">
         <div className="container">
-          <div className="text-center space-y-8">
-            <h2 className="text-3xl font-bold">Technical Skills</h2>
+          <div className="text-center space-y-8 px-2">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold">Technical Skills</h2>
             <div className="max-w-4xl mx-auto">
-              <div className="grid md:grid-cols-2 gap-8">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-8">
                 <Card>
                   <CardHeader>
-                    <CardTitle className="flex items-center gap-2">
+                    <CardTitle className="flex items-center gap-2 text-base sm:text-lg md:text-xl">
                       <Code className="h-5 w-5" />
                       Backend Development
                     </CardTitle>
                   </CardHeader>
                   <CardContent>
-                    <div className="flex flex-wrap gap-2">
+                    <div className="flex flex-wrap gap-2 text-xs sm:text-sm">
                       <Badge variant="secondary">Laravel</Badge>
                       <Badge variant="secondary">PHP</Badge>
                       <Badge variant="secondary">CodeIgniter</Badge>
@@ -134,13 +146,13 @@ export default function Portfolio() {
                 </Card>
                 <Card>
                   <CardHeader>
-                    <CardTitle className="flex items-center gap-2">
+                    <CardTitle className="flex items-center gap-2 text-base sm:text-lg md:text-xl">
                       <Database className="h-5 w-5" />
                       Database & Storage
                     </CardTitle>
                   </CardHeader>
                   <CardContent>
-                    <div className="flex flex-wrap gap-2">
+                    <div className="flex flex-wrap gap-2 text-xs sm:text-sm">
                       <Badge variant="secondary">MySQL</Badge>
                       <Badge variant="secondary">PostgreSQL</Badge>
                       <Badge variant="secondary">Redis</Badge>
@@ -152,13 +164,13 @@ export default function Portfolio() {
                 </Card>
                 <Card>
                   <CardHeader>
-                    <CardTitle className="flex items-center gap-2">
+                    <CardTitle className="flex items-center gap-2 text-base sm:text-lg md:text-xl">
                       <Globe className="h-5 w-5" />
                       Frontend & Tools
                     </CardTitle>
                   </CardHeader>
                   <CardContent>
-                    <div className="flex flex-wrap gap-2">
+                    <div className="flex flex-wrap gap-2 text-xs sm:text-sm">
                       <Badge variant="secondary">React</Badge>
                       <Badge variant="secondary">Alpine.js</Badge>
                       <Badge variant="secondary">Tailwind CSS</Badge>
@@ -169,13 +181,13 @@ export default function Portfolio() {
                 </Card>
                 <Card>
                   <CardHeader>
-                    <CardTitle className="flex items-center gap-2">
+                    <CardTitle className="flex items-center gap-2 text-base sm:text-lg md:text-xl">
                       <Server className="h-5 w-5" />
                       DevOps & Deployment
                     </CardTitle>
                   </CardHeader>
                   <CardContent>
-                    <div className="flex flex-wrap gap-2">
+                    <div className="flex flex-wrap gap-2 text-xs sm:text-sm">
                       <Badge variant="secondary">Docker</Badge>
                       <Badge variant="secondary">AWS</Badge>
                       <Badge variant="secondary">DigitalOcean</Badge>
@@ -192,23 +204,24 @@ export default function Portfolio() {
       </section>
 
       {/* Experience Section */}
-      <section id="experience" className="container py-24">
-        <div className="text-center space-y-8">
-          <h2 className="text-3xl font-bold">Professional Experience</h2>
+      <section id="experience" className="container py-10 md:py-24">
+        <div className="text-center space-y-8 px-2">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold">Professional Experience</h2>
           <div className="max-w-4xl mx-auto space-y-8">
+            {/* Experience Card 1 */}
             <Card>
               <CardHeader>
-                <div className="flex justify-between items-start text-left">
+                <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start text-left gap-2 sm:gap-0">
                   <div>
-                    <CardTitle>Back End Developer</CardTitle>
-                    <CardDescription className="text-lg">Next Page Technology Ltd.</CardDescription>
-                    <p className="text-sm text-muted-foreground mt-1">Dhaka, Bangladesh</p>
+                    <CardTitle className="text-base sm:text-lg md:text-xl">Back End Developer</CardTitle>
+                    <CardDescription className="text-sm sm:text-base md:text-lg">Next Page Technology Ltd.</CardDescription>
+                    <p className="text-xs sm:text-sm text-muted-foreground mt-1">Dhaka, Bangladesh</p>
                   </div>
-                  <Badge variant="secondary">Jul 2022 - Present</Badge>
+                  <Badge variant="secondary" className="mt-2 sm:mt-0">Jul 2022 - Present</Badge>
                 </div>
               </CardHeader>
               <CardContent>
-                <ul className="space-y-2 text-muted-foreground pl-5 text-left">
+                <ul className="space-y-2 text-muted-foreground pl-5 text-left text-xs sm:text-sm md:text-base">
                   <li>• Developed and maintained scalable web applications using Laravel and modern PHP practices</li>
                   <li>• Built responsive frontend interfaces with React.js, and Next.js frameworks</li>
                   <li>• Implemented RESTful APIs and integrated third-party services for enhanced functionality</li>
@@ -216,7 +229,7 @@ export default function Portfolio() {
                   <li>• Optimized application performance and implemented best practices for code quality</li>
                   <li>• Worked with Python for data processing and automation tasks</li>
                 </ul>
-                <div className="flex flex-wrap gap-2 mt-4">
+                <div className="flex flex-wrap gap-2 mt-4 text-xs md:text-sm">
                   <Badge variant="outline">PHP</Badge>
                   <Badge variant="outline">Laravel</Badge>
                   <Badge variant="outline">React.js</Badge>
@@ -229,20 +242,20 @@ export default function Portfolio() {
                 </div>
               </CardContent>
             </Card>
-
+            {/* Experience Card 2 */}
             <Card>
               <CardHeader>
-                <div className="flex justify-between items-start text-left">
+                <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start text-left gap-2 sm:gap-0">
                   <div>
-                    <CardTitle>Full Stack Developer</CardTitle>
-                    <CardDescription className="text-lg">MH IT Bangladesh</CardDescription>
-                    <p className="text-sm text-muted-foreground mt-1">Dhaka, Bangladesh</p>
+                    <CardTitle className="text-base sm:text-lg md:text-xl">Full Stack Developer</CardTitle>
+                    <CardDescription className="text-sm sm:text-base md:text-lg">MH IT Bangladesh</CardDescription>
+                    <p className="text-xs sm:text-sm text-muted-foreground mt-1">Dhaka, Bangladesh</p>
                   </div>
-                  <Badge variant="secondary">Nov 2021 - Jul 2022</Badge>
+                  <Badge variant="secondary" className="mt-2 sm:mt-0">Nov 2021 - Jul 2022</Badge>
                 </div>
               </CardHeader>
               <CardContent>
-                <ul className="space-y-2 text-muted-foreground pl-5 text-left">
+                <ul className="space-y-2 text-muted-foreground pl-5 text-left text-xs sm:text-sm md:text-base">
                   <li>• Designed and developed full-stack web applications using PHP and Laravel framework</li>
                   <li>• Created dynamic user interfaces and implemented responsive design principles</li>
                   <li>• Built custom content management systems and e-commerce solutions</li>
@@ -250,7 +263,7 @@ export default function Portfolio() {
                   <li>• Collaborated with team members using Git for efficient code management</li>
                   <li>• Maintained legacy CodeIgniter applications and performed system upgrades</li>
                 </ul>
-                <div className="flex flex-wrap gap-2 mt-4">
+                <div className="flex flex-wrap gap-2 mt-4 text-xs md:text-sm">
                   <Badge variant="outline">PHP</Badge>
                   <Badge variant="outline">Laravel</Badge>
                   <Badge variant="outline">CodeIgniter</Badge>
@@ -260,20 +273,20 @@ export default function Portfolio() {
                 </div>
               </CardContent>
             </Card>
-
+            {/* Experience Card 3 */}
             <Card>
               <CardHeader>
-                <div className="flex justify-between items-start text-left">
+                <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start text-left gap-2 sm:gap-0">
                   <div>
-                    <CardTitle>Web Application Developer</CardTitle>
-                    <CardDescription className="text-lg">Online Network Engineering Limited</CardDescription>
-                    <p className="text-sm text-muted-foreground mt-1">Gazipur, Dhaka, Bangladesh</p>
+                    <CardTitle className="text-base sm:text-lg md:text-xl">Web Application Developer</CardTitle>
+                    <CardDescription className="text-sm sm:text-base md:text-lg">Online Network Engineering Limited</CardDescription>
+                    <p className="text-xs sm:text-sm text-muted-foreground mt-1">Gazipur, Dhaka, Bangladesh</p>
                   </div>
-                  <Badge variant="secondary">Jan 2019 - Dec 2019</Badge>
+                  <Badge variant="secondary" className="mt-2 sm:mt-0">Jan 2019 - Dec 2019</Badge>
                 </div>
               </CardHeader>
               <CardContent>
-                <ul className="space-y-2 text-muted-foreground pl-5 text-left">
+                <ul className="space-y-2 text-muted-foreground pl-5 text-left text-xs sm:text-sm md:text-base">
                   <li>• Developed web applications using PHP and Laravel framework from ground up</li>
                   <li>• Implemented user authentication systems and role-based access control</li>
                   <li>• Created admin dashboards and reporting modules for business operations</li>
@@ -281,7 +294,7 @@ export default function Portfolio() {
                   <li>• Participated in code reviews and followed software development best practices</li>
                   <li>• Gained experience in version control systems and collaborative development workflows</li>
                 </ul>
-                <div className="flex flex-wrap gap-2 mt-4">
+                <div className="flex flex-wrap gap-2 mt-4 text-xs md:text-sm">
                   <Badge variant="outline">PHP</Badge>
                   <Badge variant="outline">Laravel</Badge>
                   <Badge variant="outline">Git</Badge>
@@ -296,14 +309,14 @@ export default function Portfolio() {
       </section>
 
       {/* Projects Section - Comprehensive Portfolio */}
-      <section id="projects" className="bg-muted/50 py-24">
+      <section id="projects" className="bg-muted/50 py-10 md:py-24">
         <div className="container">
-          <div className="text-center space-y-8">
-            <h2 className="text-3xl font-bold">Projects</h2>
-            <p className="text-muted-foreground max-w-2xl mx-auto">
+          <div className="text-center space-y-8 px-2">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold">Projects</h2>
+            <p className="text-sm sm:text-base md:text-lg text-muted-foreground max-w-2xl mx-auto">
               Explore my backend development contributions across various tech stacks and industries.
             </p>
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-8">
               {/* ERP System */}
               <Card className="group hover:shadow-lg transition-shadow">
                 <CardHeader>
@@ -330,7 +343,7 @@ export default function Portfolio() {
                         View ERP System
                       </Link>
                     </Button>
-                    <p className="text-xs text-muted-foreground text-center">Demo Login: admin@gmail.com / 12345678</p>
+                    <p className="text-xs text-muted-foreground text-center">Demo Login: admin@gmail.com / 12312345</p>
                   </div>
                 </CardContent>
               </Card>
@@ -443,20 +456,16 @@ export default function Portfolio() {
                     <Badge variant="outline">MySQL</Badge>
                     <Badge variant="outline">API Development</Badge>
                   </div>
-                  <div className="space-y-2 text-sm">
-                    <div className="grid grid-cols-2 gap-1">
-                      <Link href="https://abayaalsamir.com/" target="_blank" className="text-blue-600 hover:underline">
-                        Abaya Al Samir
+                  <div className="space-y-2 text-xs sm:text-sm">
+                    <div className="grid grid-cols-2 xs:grid-cols-2 gap-1">
+                      <Link href="https://durbiin.com/" target="_blank" className="text-blue-600 hover:underline">
+                        Durbiin
                       </Link>
                       <Link href="https://alifaonline.com/" target="_blank" className="text-blue-600 hover:underline">
                         Alifa Online
                       </Link>
-                      <Link
-                        href="https://babyblueorpinkbird.com/"
-                        target="_blank"
-                        className="text-blue-600 hover:underline"
-                      >
-                        Baby Blue Bird
+                      <Link href="https://mahmudmart.com.bd/" target="_blank" className="text-blue-600 hover:underline">
+                        Mahmud Mart
                       </Link>
                       <Link
                         href="https://chowdhuryelectronics.com.bd/"
@@ -465,17 +474,21 @@ export default function Portfolio() {
                       >
                         Chowdhury Electronics
                       </Link>
-                      <Link href="https://leafs.com.bd/" target="_blank" className="text-blue-600 hover:underline">
-                        Leafs
-                      </Link>
-                      <Link href="https://mahmudmart.com.bd/" target="_blank" className="text-blue-600 hover:underline">
-                        Mahmud Mart
-                      </Link>
                       <Link href="https://autometica.net/" target="_blank" className="text-blue-600 hover:underline">
                         Autometica
                       </Link>
-                      <Link href="https://durbiin.com/" target="_blank" className="text-blue-600 hover:underline">
-                        Durbiin
+                      <Link href="https://abayaalsamir.com/" target="_blank" className="text-blue-600 hover:underline">
+                        Abaya Al Samir
+                      </Link>
+                      <Link
+                        href="https://babyblueorpinkbird.com/"
+                        target="_blank"
+                        className="text-blue-600 hover:underline"
+                      >
+                        Baby Blue Bird
+                      </Link>
+                      <Link href="https://leafs.com.bd/" target="_blank" className="text-blue-600 hover:underline">
+                        Leafs
                       </Link>
                     </div>
                     <p className="text-xs text-muted-foreground text-center mt-2">8 Live E-commerce Platforms</p>
@@ -710,22 +723,22 @@ export default function Portfolio() {
       </section>
 
       {/* Contact Section */}
-      <section id="contact" className="bg-muted/50 py-24">
+      <section id="contact" className="bg-muted/50 py-10 md:py-24">
         <div className="container">
-          <div className="max-w-2xl mx-auto text-center space-y-8">
-            <h2 className="text-3xl font-bold">Let's Work Together</h2>
-            <p className="text-lg text-muted-foreground">
+          <div className="max-w-2xl mx-auto text-center space-y-8 px-2">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold">Let's Work Together</h2>
+            <p className="text-sm sm:text-base md:text-lg text-muted-foreground">
               I'm always interested in new opportunities and exciting projects. Whether you need a Laravel expert for
               your team or want to discuss a project, I'd love to hear from you.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button size="lg" asChild>
+            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center w-full">
+              <Button size="lg" asChild className="w-full sm:w-auto">
                 <Link href="mailto:akramhossainrabbi@outlook.com">
                   <Mail className="h-5 w-5 mr-2" />
                   Send Email
                 </Link>
               </Button>
-              <Button variant="outline" size="lg" asChild>
+              <Button variant="outline" size="lg" asChild className="w-full sm:w-auto">
                 <Link href="https://linkedin.com/in/akramhossainrabbi">
                   <Linkedin className="h-5 w-5 mr-2" />
                   Connect on LinkedIn
@@ -739,26 +752,29 @@ export default function Portfolio() {
       {/* Footer */}
       <footer className="border-t py-8">
         <div className="container">
-          <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
-            <div className="text-sm text-muted-foreground">
+          <div className="flex flex-col md:flex-row justify-between items-center gap-4 md:gap-0">
+            <div className="text-sm text-muted-foreground text-center md:text-left w-full md:w-auto">
               © 2024 - {new Date().getFullYear()} Akram Hossain. All rights reserved.
             </div>
-            <div className="flex items-center space-x-6">
+            <div className="flex items-center justify-center md:justify-end w-full md:w-auto space-x-6">
               <Link
                 href="https://github.com/akramhossainrabbi"
                 className="text-muted-foreground hover:text-foreground transition-colors"
+                aria-label="GitHub"
               >
                 <Github className="h-5 w-5" />
               </Link>
               <Link
                 href="https://linkedin.com/in/akramhossainrabbi"
                 className="text-muted-foreground hover:text-foreground transition-colors"
+                aria-label="LinkedIn"
               >
                 <Linkedin className="h-5 w-5" />
               </Link>
               <Link
                 href="mailto:akramhossainrabbi@outlook.com"
                 className="text-muted-foreground hover:text-foreground transition-colors"
+                aria-label="Email"
               >
                 <Mail className="h-5 w-5" />
               </Link>
