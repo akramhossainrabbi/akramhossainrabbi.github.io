@@ -50,7 +50,7 @@ export default function Portfolio() {
       <section className="container py-10 md:py-32">
         <div className="flex flex-col items-center text-center space-y-8 px-2">
           <div className="space-y-4">
-            <h1 className="text-2xl sm:text-3xl md:text-6xl font-bold tracking-tight">Laravel Developer</h1>
+            <h1 className="text-2xl sm:text-3xl md:text-6xl font-bold tracking-tight">Senior Laravel Developer</h1>
             <p className="text-sm sm:text-base md:text-xl text-muted-foreground max-w-2xl mx-auto">
               Crafting robust, scalable web applications with Laravel. Passionate about clean code, modern architecture,
               and delivering exceptional user experiences.
@@ -208,7 +208,45 @@ export default function Portfolio() {
         <div className="text-center space-y-8 px-2">
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold">Professional Experience</h2>
           <div className="max-w-4xl mx-auto space-y-8">
-            {/* Experience Card 1 */}
+            {/* Senior Software Developer - Current Position */}
+            <Card>
+              <CardHeader>
+                <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start text-left gap-2 sm:gap-0">
+                  <div>
+                    <CardTitle className="text-base sm:text-lg md:text-xl">Senior Software Developer</CardTitle>
+                    <CardDescription className="text-sm sm:text-base md:text-lg">
+                      Next Page Technology Ltd.
+                    </CardDescription>
+                    <p className="text-xs sm:text-sm text-muted-foreground mt-1">Dhaka, Bangladesh</p>
+                  </div>
+                  <Badge variant="secondary" className="mt-2 sm:mt-0">
+                    Nov 2024 - Present
+                  </Badge>
+                </div>
+              </CardHeader>
+              <CardContent>
+                <ul className="space-y-2 text-muted-foreground pl-5 text-left text-xs sm:text-sm md:text-base">
+                  <li>• Leading development teams and mentoring junior developers in Laravel best practices</li>
+                  <li>• Architecting scalable enterprise solutions and microservices architecture</li>
+                  <li>• Implementing advanced performance optimization and database query optimization</li>
+                  <li>• Designing and reviewing system architecture for complex business applications</li>
+                  <li>• Managing project timelines and coordinating with stakeholders for requirement analysis</li>
+                  <li>• Establishing coding standards and conducting technical code reviews</li>
+                </ul>
+                <div className="flex flex-wrap gap-2 mt-4 text-xs md:text-sm">
+                  <Badge variant="outline">PHP</Badge>
+                  <Badge variant="outline">Laravel</Badge>
+                  <Badge variant="outline">React.js</Badge>
+                  <Badge variant="outline">Next.js</Badge>
+                  <Badge variant="outline">Node.js</Badge>
+                  <Badge variant="outline">Python</Badge>
+                  <Badge variant="outline">Team Leadership</Badge>
+                  <Badge variant="outline">System Architecture</Badge>
+                  <Badge variant="outline">Git</Badge>
+                </div>
+              </CardContent>
+            </Card>
+            {/* Backend Developer - Previous Position */}
             <Card>
               <CardHeader>
                 <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start text-left gap-2 sm:gap-0">
@@ -242,7 +280,7 @@ export default function Portfolio() {
                 </div>
               </CardContent>
             </Card>
-            {/* Experience Card 2 */}
+            {/* Experience Card 3 */}
             <Card>
               <CardHeader>
                 <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start text-left gap-2 sm:gap-0">
@@ -273,7 +311,7 @@ export default function Portfolio() {
                 </div>
               </CardContent>
             </Card>
-            {/* Experience Card 3 */}
+            {/* Experience Card 4 */}
             <Card>
               <CardHeader>
                 <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start text-left gap-2 sm:gap-0">
