@@ -255,7 +255,7 @@ export default function Portfolio() {
                     <CardDescription className="text-sm sm:text-base md:text-lg">Next Page Technology Ltd.</CardDescription>
                     <p className="text-xs sm:text-sm text-muted-foreground mt-1">Dhaka, Bangladesh</p>
                   </div>
-                  <Badge variant="secondary" className="mt-2 sm:mt-0">Jul 2022 - Present</Badge>
+                  <Badge variant="secondary" className="mt-2 sm:mt-0">Jul 2022 - Nov 2024</Badge>
                 </div>
               </CardHeader>
               <CardContent>
