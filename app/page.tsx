@@ -1,864 +1,450 @@
 "use client"
 
-import { Badge } from "@/components/ui/badge"
-import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { Github, Linkedin, Mail, ExternalLink, Code, Database, Server, Globe } from "lucide-react"
+import { Github, Linkedin, Mail, ArrowUpRight } from "lucide-react"
 import Link from "next/link"
 
-import { useEffect } from "react"
+const NAV = [
+  { href: "#about", label: "About" },
+  { href: "#skills", label: "Skills" },
+  { href: "#experience", label: "Experience" },
+  { href: "#projects", label: "Projects" },
+  { href: "#contact", label: "Contact" },
+]
+
+const FACTS = [
+  { label: "Focus", value: "Laravel & PHP backend systems" },
+  { label: "Experience", value: "6+ years" },
+  { label: "Based in", value: "Dhaka, Bangladesh" },
+  { label: "Currently", value: "Lead Software Engineer, Blocknots" },
+]
+
+const SKILLS = [
+  { category: "Backend & Frameworks", items: "Laravel, PHP, CodeIgniter, Django, Flask, Node.js" },
+  { category: "Frontend", items: "JavaScript, React.js, HTML, CSS" },
+  { category: "Languages", items: "PHP, Python, SQL, Bash" },
+  { category: "Databases", items: "MySQL, PostgreSQL" },
+  { category: "Tools & Cloud", items: "Git, Docker, Jenkins, AWS" },
+  { category: "Data & Analytics", items: "Pandas, NumPy, SciPy, Matplotlib, Seaborn, Scikit-learn" },
+]
+
+const EXPERIENCE = [
+  {
+    role: "Lead Software Engineer",
+    company: "Blocknots LTD.",
+    location: "Dhaka, Bangladesh",
+    date: "Jan 2025 — Present",
+    bullets: [
+      "Lead system architecture and backend development for the company's products, keeping applications scalable, secure, and maintainable as they grow.",
+      "Guide the development team through code reviews, technical direction, and best-practice enforcement.",
+      "Work directly with stakeholders to translate business requirements into technical solutions, and own deployments and CI/CD processes for reliable releases.",
+    ],
+  },
+  {
+    role: "Senior Software Developer",
+    company: "Next Page Technology Ltd.",
+    location: "Dhaka, Bangladesh",
+    date: "Nov 2023 — Dec 2024",
+    bullets: [
+      "Developed an enterprise resource planning (ERP) system in Laravel, covering business management workflows with advanced reporting and analytics.",
+      "Architected RESTful APIs for third-party integrations, strengthening the platform's scalability and reliability.",
+      "Mentored 5+ developers, establishing coding standards and CI/CD pipelines with Jenkins and Git.",
+    ],
+  },
+  {
+    role: "Backend Developer",
+    company: "Next Page Technology Ltd.",
+    location: "Dhaka, Bangladesh",
+    date: "Jul 2022 — Nov 2023",
+    bullets: [
+      "Built high-traffic Laravel applications, including a POS system for streamlined transactions, and optimized MySQL queries for better performance.",
+      "Integrated third-party APIs and automated deployment pipelines using Docker and AWS.",
+    ],
+  },
+  {
+    role: "Full Stack Developer",
+    company: "MH IT Bangladesh",
+    location: "Dhaka, Bangladesh",
+    date: "Nov 2021 — Jul 2022",
+    bullets: [
+      "Designed and developed full-stack web applications with PHP and Laravel, including custom CMS and e-commerce solutions.",
+      "Managed database design and data migration, and maintained legacy CodeIgniter applications.",
+    ],
+  },
+  {
+    role: "Web Application Developer",
+    company: "Online Network Engineering Limited",
+    location: "Gazipur, Dhaka, Bangladesh",
+    date: "Jan 2019 — Dec 2019",
+    bullets: [
+      "Contributed to Laravel-based web applications, collaborating with senior developers to deliver client solutions.",
+      "Debugged and optimized PHP and SQL code, improving system performance.",
+    ],
+  },
+]
+
+type Project = {
+  name: string
+  tag?: string
+  description: string
+  stack: string[]
+  status: string
+  link?: { href: string; label: string }
+  links?: { href: string; label: string }[]
+}
+
+const PROJECTS: Project[] = [
+  {
+    name: "Real Estate ERP Platform",
+    tag: "Blocknots",
+    description:
+      "Leading backend architecture for an in-progress ERP platform for real estate businesses — property/listing management, transactions, and agent workflows.",
+    stack: ["Laravel", "PHP", "MySQL"],
+    status: "Ongoing, 2025",
+  },
+  {
+    name: "Nexvat — VAT Management Software",
+    tag: "NBR-enlisted",
+    description:
+      "VAT compliance platform with automated tax calculations, compliance reporting, and dynamic reports for business tax obligations.",
+    stack: ["Laravel", "React.js", "MySQL"],
+    status: "2025",
+    link: { href: "https://nexvat.com/", label: "View site" },
+  },
+  {
+    name: "ERP System — Fintrack360",
+    description: "Financial management & ERP system with advanced reporting and analytics for business management.",
+    stack: ["Laravel", "PHP", "JavaScript", "MySQL"],
+    status: "2024",
+    link: { href: "https://nextpagetl.com/products", label: "Product page" },
+  },
+  {
+    name: "Real Estate Management System",
+    description:
+      "Property listings, client management, sales tracking, and portfolio management for real estate agencies and developers.",
+    stack: ["Laravel", "PHP", "MySQL"],
+    status: "2024",
+    link: { href: "https://formonic.nextpagetl.com/", label: "View demo" },
+  },
+  {
+    name: "Travel & Booking Management System",
+    description: "Hotel bookings, flight reservations, car rentals, and integrated travel services for trip planning.",
+    stack: ["Laravel", "PHP", "MySQL", "API Integration", "Payment Gateway"],
+    status: "2023",
+    link: { href: "https://booking360.nextpagetl.com/", label: "View demo" },
+  },
+  {
+    name: "POS System",
+    description: "Point-of-sale solution for streamlined transactions and inventory management.",
+    stack: ["Laravel", "PHP", "JavaScript", "MySQL"],
+    status: "2023",
+    link: { href: "https://ssp.nextpagetl.com/", label: "View demo" },
+  },
+  {
+    name: "Learning Management System",
+    description: "Modern LMS with a Next.js frontend and a Node.js/MySQL backend for an educational platform.",
+    stack: ["Next.js", "Node.js", "MySQL", "React"],
+    status: "2022",
+    link: { href: "https://thepolycube.com/", label: "View site" },
+  },
+  {
+    name: "Courier Management System",
+    description: "Courier and delivery management with tracking, route optimization, and customer notifications.",
+    stack: ["Laravel", "PHP", "MySQL", "API Integration"],
+    status: "2022",
+    link: { href: "https://ecommerce11.nextpagetl.com/", label: "View demo" },
+  },
+  {
+    name: "School Management System",
+    description: "Educational institution management with student records, attendance, and grade management.",
+    stack: ["CodeIgniter", "PHP", "MySQL"],
+    status: "2022",
+    link: { href: "https://demo.nextpagetl.com/", label: "View demo" },
+  },
+  {
+    name: "Matrimony Platform",
+    description: "Specialized matrimonial service featuring a 'Most Match' compatibility system and custom packages.",
+    stack: ["Laravel", "PHP", "MySQL"],
+    status: "2021",
+    link: { href: "https://idealnikah.com/", label: "View site" },
+  },
+  {
+    name: "2nd Hand Marketplace",
+    description: "Marketplace for second-hand products with advanced search and filtering.",
+    stack: ["Laravel", "PHP", "MySQL"],
+    status: "2021",
+    link: { href: "https://2ndhandmarketbd.com/", label: "View site" },
+  },
+  {
+    name: "E-commerce Platforms",
+    description: "Eight live e-commerce builds across different industries, focused on scalability and performance.",
+    stack: ["Laravel", "PHP", "MySQL", "API Development"],
+    status: "2020 — 2023",
+    links: [
+      { href: "https://durbiin.com/", label: "Durbiin" },
+      { href: "https://alifaonline.com/", label: "Alifa Online" },
+      { href: "https://mahmudmart.com.bd/", label: "Mahmud Mart" },
+      { href: "https://chowdhuryelectronics.com.bd/", label: "Chowdhury Electronics" },
+      { href: "https://autometica.net/", label: "Autometica" },
+      { href: "https://abayaalsamir.com/", label: "Abaya Al Samir" },
+      { href: "https://babyblueorpinkbird.com/", label: "Baby Blue Bird" },
+      { href: "https://leafs.com.bd/", label: "Leafs" },
+    ],
+  },
+  {
+    name: "Corporate Websites",
+    description: "Backend systems for corporate sites with content management, SEO, and business integrations.",
+    stack: ["Laravel", "PHP", "MySQL"],
+    status: "2020 — 2022",
+    links: [
+      { href: "https://polluxchemicalsltd.com/", label: "Pollux Chemicals" },
+      { href: "https://sinaratex.com/", label: "Sinaratex" },
+      { href: "https://ecocolourchem.com/", label: "Eco Colour Chem" },
+    ],
+  },
+]
 
 export default function Portfolio() {
-  useEffect(() => {
-    if (typeof window !== "undefined") {
-      document.documentElement.style.scrollBehavior = "smooth"
-    }
-    return () => {
-      if (typeof window !== "undefined") {
-        document.documentElement.style.scrollBehavior = ""
-      }
-    }
-  }, [])
-
   return (
     <div className="min-h-screen bg-background">
       {/* Navigation */}
-      <nav className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-        <div className="container flex flex-wrap h-auto min-h-[4rem] items-center justify-between py-2 gap-y-2">
-          <div className="font-bold text-xl w-full sm:w-auto text-center sm:text-left">Akram Hossain</div>
-          <div className="flex flex-wrap w-full sm:w-auto justify-center sm:justify-end gap-2 sm:gap-6 mt-2 sm:mt-0">
-            <Link href="#about" className="text-sm font-medium hover:text-primary transition-colors px-2 py-1">
-              About
-            </Link>
-            <Link href="#skills" className="text-sm font-medium hover:text-primary transition-colors px-2 py-1">
-              Skills
-            </Link>
-            <Link href="#experience" className="text-sm font-medium hover:text-primary transition-colors px-2 py-1">
-              Experience
-            </Link>
-            <Link href="#projects" className="text-sm font-medium hover:text-primary transition-colors px-2 py-1">
-              Projects
-            </Link>
-            <Link href="#contact" className="text-sm font-medium hover:text-primary transition-colors px-2 py-1">
-              Contact
-            </Link>
+      <nav className="sticky top-0 z-50 w-full border-b border-border bg-background">
+        <div className="container flex h-16 items-center justify-between">
+          <Link href="#" className="font-serif text-lg font-semibold tracking-tight">
+            Akram Hossain
+          </Link>
+          <div className="hidden sm:flex items-center gap-7">
+            {NAV.map((item) => (
+              <Link
+                key={item.href}
+                href={item.href}
+                className="font-mono text-[11px] uppercase tracking-[0.12em] text-muted-foreground transition-colors hover:text-accent"
+              >
+                {item.label}
+              </Link>
+            ))}
           </div>
         </div>
       </nav>
 
-      {/* Hero Section */}
-      <section className="container py-10 md:py-32">
-        <div className="flex flex-col items-center text-center space-y-8 px-2">
-          <div className="space-y-4">
-            <h1 className="text-2xl sm:text-3xl md:text-6xl font-bold tracking-tight">Lead Software Engineer</h1>
-            <p className="text-sm sm:text-base md:text-xl text-muted-foreground max-w-2xl mx-auto">
-              Crafting robust, scalable web applications with Laravel. Passionate about clean code, modern architecture,
-              and delivering exceptional user experiences.
-            </p>
-          </div>
-          <div className="flex flex-col sm:flex-row items-center gap-3 sm:gap-4 w-full justify-center">
-            <Button size="lg" asChild className="w-full sm:w-auto">
-              <Link href="#projects">View My Work</Link>
-            </Button>
-            <Button variant="outline" size="lg" asChild className="w-full sm:w-auto">
-              <Link href="#contact">Get In Touch</Link>
-            </Button>
-          </div>
-          <div className="flex items-center justify-center gap-6 w-full">
+      {/* Hero */}
+      <section className="container border-b border-border py-20 md:py-32">
+        <div className="max-w-2xl">
+          <p className="font-mono text-xs uppercase tracking-[0.2em] text-accent">Backend Engineer · Dhaka, Bangladesh</p>
+          <h1 className="mt-4 font-serif text-5xl font-medium leading-[1.05] tracking-tight sm:text-6xl md:text-7xl">
+            Akram Hossain
+          </h1>
+          <p className="mt-3 font-mono text-sm text-muted-foreground sm:text-base">
+            Lead Software Engineer — Backend &amp; ERP Systems
+          </p>
+          <p className="mt-6 max-w-xl text-base leading-relaxed text-muted-foreground sm:text-lg">
+            I build backend systems that businesses actually run on — ERP platforms, VAT compliance
+            software, and the APIs that hold them together. Six-plus years in Laravel and PHP, most of it
+            spent owning architecture end to end and leading the teams who ship it.
+          </p>
+          <div className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-3">
             <Link
-              href="https://github.com/akramhossainrabbi"
-              className="text-muted-foreground hover:text-foreground transition-colors"
+              href="#projects"
+              className="group inline-flex items-center gap-1 border-b border-foreground pb-0.5 text-sm font-medium transition-colors hover:border-accent hover:text-accent"
             >
-              <Github className="h-6 w-6" />
+              View my work
+              <ArrowUpRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+            </Link>
+            <Link
+              href="#contact"
+              className="text-sm font-medium text-muted-foreground transition-colors hover:text-accent"
+            >
+              Get in touch
+            </Link>
+          </div>
+          <div className="mt-10 flex items-center gap-5">
+            <Link href="https://github.com/akramhossainrabbi" aria-label="GitHub" className="text-muted-foreground transition-colors hover:text-accent">
+              <Github className="h-5 w-5" />
+            </Link>
+            <Link href="https://linkedin.com/in/akramhossainrabbi" aria-label="LinkedIn" className="text-muted-foreground transition-colors hover:text-accent">
+              <Linkedin className="h-5 w-5" />
+            </Link>
+            <Link href="mailto:akramhossainrabbi@outlook.com" aria-label="Email" className="text-muted-foreground transition-colors hover:text-accent">
+              <Mail className="h-5 w-5" />
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* About */}
+      <section id="about" className="container grid gap-10 border-b border-border py-16 md:grid-cols-2 md:gap-16 md:py-24">
+        <div>
+          <p className="font-mono text-xs uppercase tracking-[0.2em] text-accent">About</p>
+          <h2 className="mt-3 font-serif text-3xl font-medium tracking-tight sm:text-4xl">
+            Backend-first, by choice.
+          </h2>
+          <p className="mt-6 text-base leading-relaxed text-muted-foreground">
+            I'm a lead software engineer specializing in Laravel development, with a particular focus on
+            backend architecture, API design, and database optimization. I care about systems that stay
+            legible as they grow — clear boundaries, sane data models, and code the next engineer can
+            actually follow. Outside of shipping, I lead and mentor development teams and hold an MSc in
+            Applied Statistics and Data Science, which still shapes how I think about the data layer.
+          </p>
+        </div>
+        <dl className="divide-y divide-border border-t border-border md:border-t-0 md:self-center">
+          {FACTS.map((fact) => (
+            <div key={fact.label} className="grid grid-cols-[120px_1fr] gap-4 py-4">
+              <dt className="font-mono text-xs uppercase tracking-[0.12em] text-muted-foreground">{fact.label}</dt>
+              <dd className="text-sm">{fact.value}</dd>
+            </div>
+          ))}
+        </dl>
+      </section>
+
+      {/* Skills */}
+      <section id="skills" className="container border-b border-border py-16 md:py-24">
+        <p className="font-mono text-xs uppercase tracking-[0.2em] text-accent">Skills</p>
+        <h2 className="mt-3 font-serif text-3xl font-medium tracking-tight sm:text-4xl">Technical skills</h2>
+        <div className="mt-10 divide-y divide-border border-t border-border">
+          {SKILLS.map((s) => (
+            <div key={s.category} className="grid gap-1 py-4 sm:grid-cols-[220px_1fr] sm:gap-4 sm:py-5">
+              <div className="font-mono text-xs uppercase tracking-[0.1em] text-muted-foreground">{s.category}</div>
+              <div className="text-sm sm:text-base">{s.items}</div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* Experience */}
+      <section id="experience" className="container border-b border-border py-16 md:py-24">
+        <p className="font-mono text-xs uppercase tracking-[0.2em] text-accent">Experience</p>
+        <h2 className="mt-3 font-serif text-3xl font-medium tracking-tight sm:text-4xl">Professional experience</h2>
+        <div className="mt-10 divide-y divide-border border-t border-border">
+          {EXPERIENCE.map((job) => (
+            <div key={`${job.company}-${job.date}`} className="grid gap-2 py-8 sm:grid-cols-[160px_1fr] sm:gap-8">
+              <div className="font-mono text-xs uppercase tracking-[0.08em] text-muted-foreground">{job.date}</div>
+              <div>
+                <h3 className="font-serif text-xl font-medium">{job.role}</h3>
+                <p className="mt-0.5 text-sm text-muted-foreground">
+                  {job.company} · {job.location}
+                </p>
+                <ul className="mt-4 space-y-2">
+                  {job.bullets.map((b, i) => (
+                    <li key={i} className="flex gap-3 text-sm leading-relaxed text-muted-foreground sm:text-base">
+                      <span className="mt-2 h-1 w-1 flex-none rounded-full bg-accent" />
+                      <span>{b}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* Projects */}
+      <section id="projects" className="container border-b border-border py-16 md:py-24">
+        <p className="font-mono text-xs uppercase tracking-[0.2em] text-accent">Projects</p>
+        <h2 className="mt-3 font-serif text-3xl font-medium tracking-tight sm:text-4xl">Selected work</h2>
+        <p className="mt-4 max-w-xl text-muted-foreground">
+          Backend contributions across ERP, compliance, e-commerce, and platform builds.
+        </p>
+        <div className="mt-10 grid gap-px overflow-hidden border border-border bg-border sm:grid-cols-2">
+          {PROJECTS.map((p, i) => (
+            <div key={p.name} className="group flex flex-col bg-background p-6 transition-colors hover:bg-secondary/60 sm:p-8">
+              <div className="flex items-start justify-between gap-4">
+                <span className="font-mono text-xs text-muted-foreground">{String(i + 1).padStart(2, "0")}</span>
+                <span className="font-mono text-[11px] uppercase tracking-[0.1em] text-accent">{p.status}</span>
+              </div>
+              <h3 className="mt-4 font-serif text-xl font-medium leading-snug">
+                {p.name}
+                {p.tag && <span className="ml-2 align-middle font-mono text-[11px] font-normal uppercase tracking-[0.08em] text-muted-foreground">· {p.tag}</span>}
+              </h3>
+              <p className="mt-3 flex-1 text-sm leading-relaxed text-muted-foreground">{p.description}</p>
+              <p className="mt-4 font-mono text-xs text-muted-foreground">{p.stack.join(" · ")}</p>
+
+              {p.link && (
+                <Link
+                  href={p.link.href}
+                  target="_blank"
+                  className="mt-5 inline-flex w-fit items-center gap-1 border-b border-foreground pb-0.5 text-sm font-medium transition-colors hover:border-accent hover:text-accent"
+                >
+                  {p.link.label}
+                  <ArrowUpRight className="h-3.5 w-3.5" />
+                </Link>
+              )}
+
+              {p.links && (
+                <div className="mt-5 grid grid-cols-2 gap-x-4 gap-y-2">
+                  {p.links.map((l) => (
+                    <Link
+                      key={l.href}
+                      href={l.href}
+                      target="_blank"
+                      className="inline-flex items-center gap-1 text-sm text-muted-foreground transition-colors hover:text-accent"
+                    >
+                      {l.label}
+                      <ArrowUpRight className="h-3 w-3" />
+                    </Link>
+                  ))}
+                </div>
+              )}
+
+              {!p.link && !p.links && (
+                <p className="mt-5 font-mono text-xs italic text-muted-foreground">In development</p>
+              )}
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* Contact */}
+      <section id="contact" className="container py-16 md:py-24">
+        <div className="max-w-xl">
+          <p className="font-mono text-xs uppercase tracking-[0.2em] text-accent">Contact</p>
+          <h2 className="mt-3 font-serif text-4xl font-medium tracking-tight sm:text-5xl">
+            Let's build something.
+          </h2>
+          <p className="mt-6 text-base leading-relaxed text-muted-foreground">
+            I'm open to new opportunities and interesting backend problems. If you need a Laravel expert
+            on your team, or just want to talk through a project, reach out.
+          </p>
+          <div className="mt-8 flex flex-col gap-3">
+            <Link
+              href="mailto:akramhossainrabbi@outlook.com"
+              className="inline-flex w-fit items-center gap-2 border-b border-foreground pb-0.5 text-base font-medium transition-colors hover:border-accent hover:text-accent"
+            >
+              <Mail className="h-4 w-4" />
+              akramhossainrabbi@outlook.com
             </Link>
             <Link
               href="https://linkedin.com/in/akramhossainrabbi"
-              className="text-muted-foreground hover:text-foreground transition-colors"
+              className="inline-flex w-fit items-center gap-2 text-sm text-muted-foreground transition-colors hover:text-accent"
             >
-              <Linkedin className="h-6 w-6" />
+              <Linkedin className="h-4 w-4" />
+              linkedin.com/in/akramhossainrabbi
             </Link>
             <Link
-              href="mailto:akramhossainrabbi@outlook.com"
-              className="text-muted-foreground hover:text-foreground transition-colors"
+              href="https://github.com/akramhossainrabbi"
+              className="inline-flex w-fit items-center gap-2 text-sm text-muted-foreground transition-colors hover:text-accent"
             >
-              <Mail className="h-6 w-6" />
+              <Github className="h-4 w-4" />
+              github.com/akramhossainrabbi
             </Link>
-          </div>
-        </div>
-      </section>
-
-      {/* About Section */}
-      <section id="about" className="container py-10 md:py-24">
-        <div className="max-w-3xl mx-auto text-center space-y-8 px-2">
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold">About Me</h2>
-          <p className="text-sm sm:text-base md:text-lg text-muted-foreground leading-relaxed">
-            I'm a lead software engineer with 6+ years of experience specializing in Laravel development. I have
-            a passion for building scalable, maintainable applications and leading development teams to success. My
-            expertise spans the entire web development stack, with a particular focus on backend architecture, API
-            design, and database optimization.
-          </p>
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 md:gap-8 pt-8">
-            <div className="text-center space-y-2">
-              <Code className="h-10 w-10 md:h-12 md:w-12 mx-auto text-primary" />
-              <h3 className="font-semibold text-base md:text-lg">Clean Code</h3>
-              <p className="text-xs sm:text-sm text-muted-foreground">
-                Writing maintainable, testable code following best practices
-              </p>
-            </div>
-            <div className="text-center space-y-2">
-              <Server className="h-10 w-10 md:h-12 md:w-12 mx-auto text-primary" />
-              <h3 className="font-semibold text-base md:text-lg">Architecture</h3>
-              <p className="text-xs sm:text-sm text-muted-foreground">Designing scalable systems and robust backend solutions</p>
-            </div>
-            <div className="text-center space-y-2">
-              <Database className="h-10 w-10 md:h-12 md:w-12 mx-auto text-primary" />
-              <h3 className="font-semibold text-base md:text-lg">Performance</h3>
-              <p className="text-xs sm:text-sm text-muted-foreground">Optimizing applications for speed and efficiency</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Skills Section */}
-      <section id="skills" className="bg-muted/50 py-10 md:py-24">
-        <div className="container">
-          <div className="text-center space-y-8 px-2">
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold">Technical Skills</h2>
-            <div className="max-w-4xl mx-auto">
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-8">
-                <Card>
-                  <CardHeader>
-                    <CardTitle className="flex items-center gap-2 text-base sm:text-lg md:text-xl">
-                      <Code className="h-5 w-5" />
-                      Backend Development
-                    </CardTitle>
-                  </CardHeader>
-                  <CardContent>
-                    <div className="flex flex-wrap gap-2 text-xs sm:text-sm">
-                      <Badge variant="secondary">Laravel</Badge>
-                      <Badge variant="secondary">PHP</Badge>
-                      <Badge variant="secondary">CodeIgniter</Badge>
-                      <Badge variant="secondary">RESTful APIs</Badge>
-                      <Badge variant="secondary">GraphQL</Badge>
-                      <Badge variant="secondary">Microservices</Badge>
-                    </div>
-                  </CardContent>
-                </Card>
-                <Card>
-                  <CardHeader>
-                    <CardTitle className="flex items-center gap-2 text-base sm:text-lg md:text-xl">
-                      <Database className="h-5 w-5" />
-                      Database & Storage
-                    </CardTitle>
-                  </CardHeader>
-                  <CardContent>
-                    <div className="flex flex-wrap gap-2 text-xs sm:text-sm">
-                      <Badge variant="secondary">MySQL</Badge>
-                      <Badge variant="secondary">PostgreSQL</Badge>
-                      <Badge variant="secondary">Redis</Badge>
-                      <Badge variant="secondary">MongoDB</Badge>
-                      <Badge variant="secondary">Elasticsearch</Badge>
-                      <Badge variant="secondary">AWS S3</Badge>
-                    </div>
-                  </CardContent>
-                </Card>
-                <Card>
-                  <CardHeader>
-                    <CardTitle className="flex items-center gap-2 text-base sm:text-lg md:text-xl">
-                      <Globe className="h-5 w-5" />
-                      Frontend & Tools
-                    </CardTitle>
-                  </CardHeader>
-                  <CardContent>
-                    <div className="flex flex-wrap gap-2 text-xs sm:text-sm">
-                      <Badge variant="secondary">React</Badge>
-                      <Badge variant="secondary">Alpine.js</Badge>
-                      <Badge variant="secondary">Tailwind CSS</Badge>
-                      <Badge variant="secondary">Bootstrap</Badge>
-                      <Badge variant="secondary">Livewire</Badge>
-                    </div>
-                  </CardContent>
-                </Card>
-                <Card>
-                  <CardHeader>
-                    <CardTitle className="flex items-center gap-2 text-base sm:text-lg md:text-xl">
-                      <Server className="h-5 w-5" />
-                      DevOps & Deployment
-                    </CardTitle>
-                  </CardHeader>
-                  <CardContent>
-                    <div className="flex flex-wrap gap-2 text-xs sm:text-sm">
-                      <Badge variant="secondary">Docker</Badge>
-                      <Badge variant="secondary">AWS</Badge>
-                      <Badge variant="secondary">DigitalOcean</Badge>
-                      <Badge variant="secondary">Nginx</Badge>
-                      <Badge variant="secondary">CI/CD</Badge>
-                      <Badge variant="secondary">Git</Badge>
-                    </div>
-                  </CardContent>
-                </Card>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Experience Section */}
-      <section id="experience" className="container py-10 md:py-24">
-        <div className="text-center space-y-8 px-2">
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold">Professional Experience</h2>
-          <div className="max-w-4xl mx-auto space-y-8">
-            {/* Lead Software Engineer - Current Position */}
-            <Card>
-              <CardHeader>
-                <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start text-left gap-2 sm:gap-0">
-                  <div>
-                    <CardTitle className="text-base sm:text-lg md:text-xl">Lead Software Engineer</CardTitle>
-                    <CardDescription className="text-sm sm:text-base md:text-lg">
-                      Blocknots LTD.
-                    </CardDescription>
-                    <p className="text-xs sm:text-sm text-muted-foreground mt-1">Dhaka, Bangladesh</p>
-                  </div>
-                  <Badge variant="secondary" className="mt-2 sm:mt-0">
-                    Jan 2025 - Present
-                  </Badge>
-                </div>
-              </CardHeader>
-              <CardContent>
-                <ul className="space-y-2 text-muted-foreground pl-5 text-left text-xs sm:text-sm md:text-base">
-                  <li>• Lead system architecture and backend development for the company's products, keeping applications scalable, secure, and maintainable as they grow</li>
-                  <li>• Guide the development team through code reviews, technical direction, and best-practice enforcement</li>
-                  <li>• Work directly with stakeholders to translate business requirements into technical solutions, and own deployments and CI/CD processes for reliable releases</li>
-                  <li>• Currently architecting the backend for an in-progress real estate ERP platform</li>
-                </ul>
-                <div className="flex flex-wrap gap-2 mt-4 text-xs md:text-sm">
-                  <Badge variant="outline">PHP</Badge>
-                  <Badge variant="outline">Laravel</Badge>
-                  <Badge variant="outline">MySQL</Badge>
-                  <Badge variant="outline">Team Leadership</Badge>
-                  <Badge variant="outline">System Architecture</Badge>
-                  <Badge variant="outline">CI/CD</Badge>
-                  <Badge variant="outline">Git</Badge>
-                </div>
-              </CardContent>
-            </Card>
-            {/* Senior Software Developer - Next Page */}
-            <Card>
-              <CardHeader>
-                <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start text-left gap-2 sm:gap-0">
-                  <div>
-                    <CardTitle className="text-base sm:text-lg md:text-xl">Senior Software Developer</CardTitle>
-                    <CardDescription className="text-sm sm:text-base md:text-lg">
-                      Next Page Technology Ltd.
-                    </CardDescription>
-                    <p className="text-xs sm:text-sm text-muted-foreground mt-1">Dhaka, Bangladesh</p>
-                  </div>
-                  <Badge variant="secondary" className="mt-2 sm:mt-0">
-                    Nov 2023 - Dec 2024
-                  </Badge>
-                </div>
-              </CardHeader>
-              <CardContent>
-                <ul className="space-y-2 text-muted-foreground pl-5 text-left text-xs sm:text-sm md:text-base">
-                  <li>• Developed an enterprise resource planning (ERP) system in Laravel, covering business management workflows with advanced reporting and analytics</li>
-                  <li>• Architected RESTful APIs for third-party integrations, strengthening the platform's scalability and reliability</li>
-                  <li>• Mentored 5+ developers, establishing coding standards and CI/CD pipelines with Jenkins and Git</li>
-                </ul>
-                <div className="flex flex-wrap gap-2 mt-4 text-xs md:text-sm">
-                  <Badge variant="outline">PHP</Badge>
-                  <Badge variant="outline">Laravel</Badge>
-                  <Badge variant="outline">MySQL</Badge>
-                  <Badge variant="outline">Team Leadership</Badge>
-                  <Badge variant="outline">Jenkins</Badge>
-                  <Badge variant="outline">Git</Badge>
-                </div>
-              </CardContent>
-            </Card>
-            {/* Backend Developer - Previous Position */}
-            <Card>
-              <CardHeader>
-                <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start text-left gap-2 sm:gap-0">
-                  <div>
-                    <CardTitle className="text-base sm:text-lg md:text-xl">Back End Developer</CardTitle>
-                    <CardDescription className="text-sm sm:text-base md:text-lg">Next Page Technology Ltd.</CardDescription>
-                    <p className="text-xs sm:text-sm text-muted-foreground mt-1">Dhaka, Bangladesh</p>
-                  </div>
-                  <Badge variant="secondary" className="mt-2 sm:mt-0">Jul 2022 - Nov 2023</Badge>
-                </div>
-              </CardHeader>
-              <CardContent>
-                <ul className="space-y-2 text-muted-foreground pl-5 text-left text-xs sm:text-sm md:text-base">
-                  <li>• Built high-traffic Laravel applications, including a POS system for streamlined transactions, and optimized MySQL queries for better performance</li>
-                  <li>• Integrated third-party APIs and automated deployment pipelines using Docker and AWS</li>
-                </ul>
-                <div className="flex flex-wrap gap-2 mt-4 text-xs md:text-sm">
-                  <Badge variant="outline">PHP</Badge>
-                  <Badge variant="outline">Laravel</Badge>
-                  <Badge variant="outline">MySQL</Badge>
-                  <Badge variant="outline">Docker</Badge>
-                  <Badge variant="outline">AWS</Badge>
-                  <Badge variant="outline">Git</Badge>
-                </div>
-              </CardContent>
-            </Card>
-            {/* Experience Card 3 */}
-            <Card>
-              <CardHeader>
-                <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start text-left gap-2 sm:gap-0">
-                  <div>
-                    <CardTitle className="text-base sm:text-lg md:text-xl">Full Stack Developer</CardTitle>
-                    <CardDescription className="text-sm sm:text-base md:text-lg">MH IT Bangladesh</CardDescription>
-                    <p className="text-xs sm:text-sm text-muted-foreground mt-1">Dhaka, Bangladesh</p>
-                  </div>
-                  <Badge variant="secondary" className="mt-2 sm:mt-0">Nov 2021 - Jul 2022</Badge>
-                </div>
-              </CardHeader>
-              <CardContent>
-                <ul className="space-y-2 text-muted-foreground pl-5 text-left text-xs sm:text-sm md:text-base">
-                  <li>• Designed and developed full-stack web applications using PHP and Laravel framework</li>
-                  <li>• Created dynamic user interfaces and implemented responsive design principles</li>
-                  <li>• Built custom content management systems and e-commerce solutions</li>
-                  <li>• Managed database design, optimization, and data migration processes</li>
-                  <li>• Collaborated with team members using Git for efficient code management</li>
-                  <li>• Maintained legacy CodeIgniter applications and performed system upgrades</li>
-                </ul>
-                <div className="flex flex-wrap gap-2 mt-4 text-xs md:text-sm">
-                  <Badge variant="outline">PHP</Badge>
-                  <Badge variant="outline">Laravel</Badge>
-                  <Badge variant="outline">CodeIgniter</Badge>
-                  <Badge variant="outline">Git</Badge>
-                  <Badge variant="outline">MySQL</Badge>
-                  <Badge variant="outline">JavaScript</Badge>
-                </div>
-              </CardContent>
-            </Card>
-            {/* Experience Card 4 */}
-            <Card>
-              <CardHeader>
-                <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start text-left gap-2 sm:gap-0">
-                  <div>
-                    <CardTitle className="text-base sm:text-lg md:text-xl">Web Application Developer</CardTitle>
-                    <CardDescription className="text-sm sm:text-base md:text-lg">Online Network Engineering Limited</CardDescription>
-                    <p className="text-xs sm:text-sm text-muted-foreground mt-1">Gazipur, Dhaka, Bangladesh</p>
-                  </div>
-                  <Badge variant="secondary" className="mt-2 sm:mt-0">Jan 2019 - Dec 2019</Badge>
-                </div>
-              </CardHeader>
-              <CardContent>
-                <ul className="space-y-2 text-muted-foreground pl-5 text-left text-xs sm:text-sm md:text-base">
-                  <li>• Developed web applications using PHP and Laravel framework from ground up</li>
-                  <li>• Implemented user authentication systems and role-based access control</li>
-                  <li>• Created admin dashboards and reporting modules for business operations</li>
-                  <li>• Worked on database design and implemented efficient data storage solutions</li>
-                  <li>• Participated in code reviews and followed software development best practices</li>
-                  <li>• Gained experience in version control systems and collaborative development workflows</li>
-                </ul>
-                <div className="flex flex-wrap gap-2 mt-4 text-xs md:text-sm">
-                  <Badge variant="outline">PHP</Badge>
-                  <Badge variant="outline">Laravel</Badge>
-                  <Badge variant="outline">Git</Badge>
-                  <Badge variant="outline">MySQL</Badge>
-                  <Badge variant="outline">HTML/CSS</Badge>
-                  <Badge variant="outline">JavaScript</Badge>
-                </div>
-              </CardContent>
-            </Card>
-          </div>
-        </div>
-      </section>
-
-      {/* Projects Section - Comprehensive Portfolio */}
-      <section id="projects" className="bg-muted/50 py-10 md:py-24">
-        <div className="container">
-          <div className="text-center space-y-8 px-2">
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold">Projects</h2>
-            <p className="text-sm sm:text-base md:text-lg text-muted-foreground max-w-2xl mx-auto">
-              Explore my backend development contributions across various tech stacks and industries.
-            </p>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-8">
-              {/* ERP System */}
-              <Card className="group hover:shadow-lg transition-shadow">
-                <CardHeader>
-                  <div className="aspect-video bg-gradient-to-br from-purple-500 to-indigo-600 rounded-md mb-4 flex items-center justify-center">
-                    <Database className="h-12 w-12 text-white" />
-                  </div>
-                  <CardTitle>ERP System — Fintrack360</CardTitle>
-                  <CardDescription>
-                    Financial management & ERP system for comprehensive business management with advanced
-                    reporting and analytics.
-                  </CardDescription>
-                </CardHeader>
-                <CardContent>
-                  <div className="flex flex-wrap gap-2 mb-4">
-                    <Badge variant="outline">Laravel</Badge>
-                    <Badge variant="outline">PHP</Badge>
-                    <Badge variant="outline">JavaScript</Badge>
-                    <Badge variant="outline">MySQL</Badge>
-                  </div>
-                  <div className="space-y-2">
-                    <Button size="sm" asChild className="w-full">
-                      <Link href="https://nextpagetl.com/products" target="_blank">
-                        <Globe className="h-4 w-4 mr-2" />
-                        View Product Page
-                      </Link>
-                    </Button>
-                  </div>
-                </CardContent>
-              </Card>
-
-              {/* POS System */}
-              <Card className="group hover:shadow-lg transition-shadow">
-                <CardHeader>
-                  <div className="aspect-video bg-gradient-to-br from-green-500 to-teal-600 rounded-md mb-4 flex items-center justify-center">
-                    <Server className="h-12 w-12 text-white" />
-                  </div>
-                  <CardTitle>POS System</CardTitle>
-                  <CardDescription>
-                    Developed a comprehensive point-of-sale solution for streamlined transactions and inventory
-                    management.
-                  </CardDescription>
-                </CardHeader>
-                <CardContent>
-                  <div className="flex flex-wrap gap-2 mb-4">
-                    <Badge variant="outline">Laravel</Badge>
-                    <Badge variant="outline">PHP</Badge>
-                    <Badge variant="outline">JavaScript</Badge>
-                    <Badge variant="outline">MySQL</Badge>
-                  </div>
-                  <div className="space-y-2">
-                    <Button size="sm" asChild className="w-full">
-                      <Link href="https://ssp.nextpagetl.com/" target="_blank">
-                        <Globe className="h-4 w-4 mr-2" />
-                        View POS System
-                      </Link>
-                    </Button>
-                    <p className="text-xs text-muted-foreground text-center">Advanced point-of-sale solution</p>
-                  </div>
-                </CardContent>
-              </Card>
-
-              {/* Hotel Management System */}
-              <Card className="group hover:shadow-lg transition-shadow">
-                <CardHeader>
-                  <div className="aspect-video bg-gradient-to-br from-blue-500 to-cyan-600 rounded-md mb-4 flex items-center justify-center">
-                    <Globe className="h-12 w-12 text-white" />
-                  </div>
-                  <CardTitle>Travel & Booking Management System</CardTitle>
-                  <CardDescription>
-                    Comprehensive travel management platform featuring hotel bookings, flight reservations, car rentals,
-                    and integrated travel services for complete trip planning.
-                  </CardDescription>
-                </CardHeader>
-                <CardContent>
-                  <div className="flex flex-wrap gap-2 mb-4">
-                    <Badge variant="outline">Laravel</Badge>
-                    <Badge variant="outline">PHP</Badge>
-                    <Badge variant="outline">MySQL</Badge>
-                    <Badge variant="outline">API Integration</Badge>
-                    <Badge variant="outline">Payment Gateway</Badge>
-                  </div>
-                  <Button size="sm" asChild className="w-full">
-                    <Link href="https://booking360.nextpagetl.com/" target="_blank">
-                      <Globe className="h-4 w-4 mr-2" />
-                      View Booking Platform
-                    </Link>
-                  </Button>
-                </CardContent>
-              </Card>
-
-              {/* Learning Management System */}
-              <Card className="group hover:shadow-lg transition-shadow">
-                <CardHeader>
-                  <div className="aspect-video bg-gradient-to-br from-orange-500 to-red-600 rounded-md mb-4 flex items-center justify-center">
-                    <Code className="h-12 w-12 text-white" />
-                  </div>
-                  <CardTitle>Learning Management System</CardTitle>
-                  <CardDescription>
-                    Built a modern LMS with Next.js frontend, managed backend with Node.js and MySQL for comprehensive
-                    educational platform.
-                  </CardDescription>
-                </CardHeader>
-                <CardContent>
-                  <div className="flex flex-wrap gap-2 mb-4">
-                    <Badge variant="outline">Next.js</Badge>
-                    <Badge variant="outline">Node.js</Badge>
-                    <Badge variant="outline">MySQL</Badge>
-                    <Badge variant="outline">React</Badge>
-                  </div>
-                  <Button size="sm" asChild className="w-full">
-                    <Link href="https://thepolycube.com/" target="_blank">
-                      <Globe className="h-4 w-4 mr-2" />
-                      View LMS Platform
-                    </Link>
-                  </Button>
-                </CardContent>
-              </Card>
-
-              {/* E-commerce Platforms */}
-              <Card className="group hover:shadow-lg transition-shadow">
-                <CardHeader>
-                  <div className="aspect-video bg-gradient-to-br from-pink-500 to-rose-600 rounded-md mb-4 flex items-center justify-center">
-                    <Globe className="h-12 w-12 text-white" />
-                  </div>
-                  <CardTitle>E-commerce Platforms</CardTitle>
-                  <CardDescription>
-                    Developed multiple e-commerce sites focusing on scalability, performance, and seamless user
-                    experience across various industries.
-                  </CardDescription>
-                </CardHeader>
-                <CardContent>
-                  <div className="flex flex-wrap gap-2 mb-4">
-                    <Badge variant="outline">Laravel</Badge>
-                    <Badge variant="outline">PHP</Badge>
-                    <Badge variant="outline">JavaScript</Badge>
-                    <Badge variant="outline">MySQL</Badge>
-                    <Badge variant="outline">API Development</Badge>
-                  </div>
-                  <div className="space-y-2 text-xs sm:text-sm">
-                    <div className="grid grid-cols-2 xs:grid-cols-2 gap-1">
-                      <Link href="https://durbiin.com/" target="_blank" className="text-blue-600 hover:underline">
-                        Durbiin
-                      </Link>
-                      <Link href="https://alifaonline.com/" target="_blank" className="text-blue-600 hover:underline">
-                        Alifa Online
-                      </Link>
-                      <Link href="https://mahmudmart.com.bd/" target="_blank" className="text-blue-600 hover:underline">
-                        Mahmud Mart
-                      </Link>
-                      <Link
-                        href="https://chowdhuryelectronics.com.bd/"
-                        target="_blank"
-                        className="text-blue-600 hover:underline"
-                      >
-                        Chowdhury Electronics
-                      </Link>
-                      <Link href="https://autometica.net/" target="_blank" className="text-blue-600 hover:underline">
-                        Autometica
-                      </Link>
-                      <Link href="https://abayaalsamir.com/" target="_blank" className="text-blue-600 hover:underline">
-                        Abaya Al Samir
-                      </Link>
-                      <Link
-                        href="https://babyblueorpinkbird.com/"
-                        target="_blank"
-                        className="text-blue-600 hover:underline"
-                      >
-                        Baby Blue Bird
-                      </Link>
-                      <Link href="https://leafs.com.bd/" target="_blank" className="text-blue-600 hover:underline">
-                        Leafs
-                      </Link>
-                    </div>
-                    <p className="text-xs text-muted-foreground text-center mt-2">8 Live E-commerce Platforms</p>
-                  </div>
-                </CardContent>
-              </Card>
-
-              {/* Corporate Websites */}
-              <Card className="group hover:shadow-lg transition-shadow">
-                <CardHeader>
-                  <div className="aspect-video bg-gradient-to-br from-indigo-500 to-purple-600 rounded-md mb-4 flex items-center justify-center">
-                    <Server className="h-12 w-12 text-white" />
-                  </div>
-                  <CardTitle>Corporate Websites</CardTitle>
-                  <CardDescription>
-                    Built robust backend systems for corporate websites with content management, SEO optimization, and
-                    business integration.
-                  </CardDescription>
-                </CardHeader>
-                <CardContent>
-                  <div className="flex flex-wrap gap-2 mb-4">
-                    <Badge variant="outline">Laravel</Badge>
-                    <Badge variant="outline">PHP</Badge>
-                    <Badge variant="outline">JavaScript</Badge>
-                    <Badge variant="outline">MySQL</Badge>
-                  </div>
-                  <div className="space-y-2 text-sm">
-                    <Link
-                      href="https://polluxchemicalsltd.com/"
-                      target="_blank"
-                      className="block text-blue-600 hover:underline"
-                    >
-                      Pollux Chemicals Ltd →
-                    </Link>
-                    <Link href="https://sinaratex.com/" target="_blank" className="block text-blue-600 hover:underline">
-                      Sinaratex →
-                    </Link>
-                    <Link
-                      href="https://ecocolourchem.com/"
-                      target="_blank"
-                      className="block text-blue-600 hover:underline"
-                    >
-                      Eco Colour Chem →
-                    </Link>
-                  </div>
-                </CardContent>
-              </Card>
-
-              {/* 2nd Hand Marketplace */}
-              <Card className="group hover:shadow-lg transition-shadow">
-                <CardHeader>
-                  <div className="aspect-video bg-gradient-to-br from-teal-500 to-green-600 rounded-md mb-4 flex items-center justify-center">
-                    <Database className="h-12 w-12 text-white" />
-                  </div>
-                  <CardTitle>2nd Hand Marketplace</CardTitle>
-                  <CardDescription>
-                    Designed and implemented a comprehensive marketplace for second-hand products with advanced search
-                    and filtering capabilities.
-                  </CardDescription>
-                </CardHeader>
-                <CardContent>
-                  <div className="flex flex-wrap gap-2 mb-4">
-                    <Badge variant="outline">Laravel</Badge>
-                    <Badge variant="outline">PHP</Badge>
-                    <Badge variant="outline">JavaScript</Badge>
-                    <Badge variant="outline">MySQL</Badge>
-                  </div>
-                  <Button size="sm" asChild className="w-full">
-                    <Link href="https://2ndhandmarketbd.com/" target="_blank">
-                      <Globe className="h-4 w-4 mr-2" />
-                      Visit Marketplace
-                    </Link>
-                  </Button>
-                </CardContent>
-              </Card>
-
-              {/* Matrimony Platform */}
-              <Card className="group hover:shadow-lg transition-shadow">
-                <CardHeader>
-                  <div className="aspect-video bg-gradient-to-br from-red-500 to-pink-600 rounded-md mb-4 flex items-center justify-center">
-                    <Globe className="h-12 w-12 text-white" />
-                  </div>
-                  <CardTitle>Matrimony Platform</CardTitle>
-                  <CardDescription>
-                    Developed a specialized matrimonial service with unique features like 'Most Match' compatibility
-                    system and custom package services.
-                  </CardDescription>
-                </CardHeader>
-                <CardContent>
-                  <div className="flex flex-wrap gap-2 mb-4">
-                    <Badge variant="outline">Laravel</Badge>
-                    <Badge variant="outline">PHP</Badge>
-                    <Badge variant="outline">JavaScript</Badge>
-                    <Badge variant="outline">MySQL</Badge>
-                  </div>
-                  <Button size="sm" asChild className="w-full">
-                    <Link href="https://idealnikah.com/" target="_blank">
-                      <Globe className="h-4 w-4 mr-2" />
-                      Visit Ideal Nikah
-                    </Link>
-                  </Button>
-                </CardContent>
-              </Card>
-
-              {/* Real Estate ERP - Blocknots (Ongoing) */}
-              <Card className="group hover:shadow-lg transition-shadow">
-                <CardHeader>
-                  <div className="aspect-video bg-gradient-to-br from-slate-500 to-cyan-700 rounded-md mb-4 flex items-center justify-center">
-                    <Database className="h-12 w-12 text-white" />
-                  </div>
-                  <CardTitle>Real Estate ERP Platform</CardTitle>
-                  <CardDescription>
-                    Leading backend architecture for an in-progress ERP platform for real estate businesses at
-                    Blocknots, covering property/listing management, transactions, and agent workflows.
-                  </CardDescription>
-                </CardHeader>
-                <CardContent>
-                  <div className="flex flex-wrap gap-2 mb-4">
-                    <Badge variant="outline">Laravel</Badge>
-                    <Badge variant="outline">PHP</Badge>
-                    <Badge variant="outline">MySQL</Badge>
-                  </div>
-                  <Badge variant="secondary">Ongoing, 2025</Badge>
-                </CardContent>
-              </Card>
-
-              {/* PMS System */}
-              <Card className="group hover:shadow-lg transition-shadow">
-                <CardHeader>
-                  <div className="aspect-video bg-gradient-to-br from-cyan-500 to-blue-600 rounded-md mb-4 flex items-center justify-center">
-                    <Database className="h-12 w-12 text-white" />
-                  </div>
-                  <CardTitle>Real Estate Management System</CardTitle>
-                  <CardDescription>
-                    Comprehensive real estate management solution for property listings, client management, sales
-                    tracking, and property portfolio management.
-                  </CardDescription>
-                </CardHeader>
-                <CardContent>
-                  <div className="flex flex-wrap gap-2 mb-4">
-                    <Badge variant="outline">Laravel</Badge>
-                    <Badge variant="outline">PHP</Badge>
-                    <Badge variant="outline">JavaScript</Badge>
-                    <Badge variant="outline">MySQL</Badge>
-                  </div>
-                  <div className="space-y-2">
-                    <Button size="sm" asChild className="w-full">
-                      <Link href="https://formonic.nextpagetl.com/" target="_blank">
-                        <Globe className="h-4 w-4 mr-2" />
-                        View Real Estate System
-                      </Link>
-                    </Button>
-                    <p className="text-sm text-muted-foreground">
-                      Built for real estate agencies and property developers with automated lead management and property
-                      showcase features.
-                    </p>
-                  </div>
-                </CardContent>
-              </Card>
-
-              {/* VAT Software */}
-              <Card className="group hover:shadow-lg transition-shadow">
-                <CardHeader>
-                  <div className="aspect-video bg-gradient-to-br from-emerald-500 to-teal-600 rounded-md mb-4 flex items-center justify-center">
-                    <Server className="h-12 w-12 text-white" />
-                  </div>
-                  <CardTitle>Nexvat — VAT Management Software</CardTitle>
-                  <CardDescription>
-                    Specialized VAT calculation and compliance software for businesses to manage tax obligations and
-                    generate reports.
-                  </CardDescription>
-                </CardHeader>
-                <CardContent>
-                  <div className="flex flex-wrap gap-2 mb-4">
-                    <Badge variant="outline">Laravel</Badge>
-                    <Badge variant="outline">PHP</Badge>
-                    <Badge variant="outline">React.js</Badge>
-                    <Badge variant="outline">MySQL</Badge>
-                    <Badge variant="outline">Tax Compliance</Badge>
-                  </div>
-                  <div className="space-y-2">
-                    <Button size="sm" asChild className="w-full">
-                      <Link href="https://nexvat.com/" target="_blank">
-                        <Globe className="h-4 w-4 mr-2" />
-                        View VAT Software
-                      </Link>
-                    </Button>
-                    <p className="text-sm text-muted-foreground">
-                      Automated VAT calculations, compliance reporting, and integration with accounting systems.
-                    </p>
-                  </div>
-                </CardContent>
-              </Card>
-
-              {/* Courier Service */}
-              <Card className="group hover:shadow-lg transition-shadow">
-                <CardHeader>
-                  <div className="aspect-video bg-gradient-to-br from-violet-500 to-purple-600 rounded-md mb-4 flex items-center justify-center">
-                    <Globe className="h-12 w-12 text-white" />
-                  </div>
-                  <CardTitle>Courier Management System</CardTitle>
-                  <CardDescription>
-                    Complete courier and delivery management solution with tracking, route optimization, and customer
-                    notifications.
-                  </CardDescription>
-                </CardHeader>
-                <CardContent>
-                  <div className="flex flex-wrap gap-2 mb-4">
-                    <Badge variant="outline">Laravel</Badge>
-                    <Badge variant="outline">PHP</Badge>
-                    <Badge variant="outline">JavaScript</Badge>
-                    <Badge variant="outline">MySQL</Badge>
-                    <Badge variant="outline">API Integration</Badge>
-                  </div>
-                  <Button size="sm" asChild className="w-full">
-                    <Link href="https://ecommerce11.nextpagetl.com/" target="_blank">
-                      <Globe className="h-4 w-4 mr-2" />
-                      View Courier System
-                    </Link>
-                  </Button>
-                </CardContent>
-              </Card>
-
-              {/* School Management System */}
-              <Card className="group hover:shadow-lg transition-shadow">
-                <CardHeader>
-                  <div className="aspect-video bg-gradient-to-br from-amber-500 to-orange-600 rounded-md mb-4 flex items-center justify-center">
-                    <Code className="h-12 w-12 text-white" />
-                  </div>
-                  <CardTitle>School Management System</CardTitle>
-                  <CardDescription>
-                    Comprehensive educational institution management with student records, attendance tracking, and
-                    grade management.
-                  </CardDescription>
-                </CardHeader>
-                <CardContent>
-                  <div className="flex flex-wrap gap-2 mb-4">
-                    <Badge variant="outline">CodeIgniter</Badge>
-                    <Badge variant="outline">PHP</Badge>
-                    <Badge variant="outline">MySQL</Badge>
-                    <Badge variant="outline">JavaScript</Badge>
-                  </div>
-                  <Button size="sm" asChild className="w-full">
-                    <Link href="https://demo.nextpagetl.com/" target="_blank">
-                      <Globe className="h-4 w-4 mr-2" />
-                      View School System
-                    </Link>
-                  </Button>
-                </CardContent>
-              </Card>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Contact Section */}
-      <section id="contact" className="bg-muted/50 py-10 md:py-24">
-        <div className="container">
-          <div className="max-w-2xl mx-auto text-center space-y-8 px-2">
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold">Let's Work Together</h2>
-            <p className="text-sm sm:text-base md:text-lg text-muted-foreground">
-              I'm always interested in new opportunities and exciting projects. Whether you need a Laravel expert for
-              your team or want to discuss a project, I'd love to hear from you.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center w-full">
-              <Button size="lg" asChild className="w-full sm:w-auto">
-                <Link href="mailto:akramhossainrabbi@outlook.com">
-                  <Mail className="h-5 w-5 mr-2" />
-                  Send Email
-                </Link>
-              </Button>
-              <Button variant="outline" size="lg" asChild className="w-full sm:w-auto">
-                <Link href="https://linkedin.com/in/akramhossainrabbi">
-                  <Linkedin className="h-5 w-5 mr-2" />
-                  Connect on LinkedIn
-                </Link>
-              </Button>
-            </div>
           </div>
         </div>
       </section>
 
       {/* Footer */}
-      <footer className="border-t py-8">
-        <div className="container">
-          <div className="flex flex-col md:flex-row justify-between items-center gap-4 md:gap-0">
-            <div className="text-sm text-muted-foreground text-center md:text-left w-full md:w-auto">
-              © 2024 - {new Date().getFullYear()} Akram Hossain. All rights reserved.
-            </div>
-            <div className="flex items-center justify-center md:justify-end w-full md:w-auto space-x-6">
-              <Link
-                href="https://github.com/akramhossainrabbi"
-                className="text-muted-foreground hover:text-foreground transition-colors"
-                aria-label="GitHub"
-              >
-                <Github className="h-5 w-5" />
-              </Link>
-              <Link
-                href="https://linkedin.com/in/akramhossainrabbi"
-                className="text-muted-foreground hover:text-foreground transition-colors"
-                aria-label="LinkedIn"
-              >
-                <Linkedin className="h-5 w-5" />
-              </Link>
-              <Link
-                href="mailto:akramhossainrabbi@outlook.com"
-                className="text-muted-foreground hover:text-foreground transition-colors"
-                aria-label="Email"
-              >
-                <Mail className="h-5 w-5" />
-              </Link>
-            </div>
+      <footer className="border-t border-border py-8">
+        <div className="container flex flex-col items-center justify-between gap-4 sm:flex-row">
+          <p className="font-mono text-xs text-muted-foreground">
+            © 2024–{new Date().getFullYear()} Akram Hossain
+          </p>
+          <div className="flex items-center gap-5">
+            <Link href="https://github.com/akramhossainrabbi" aria-label="GitHub" className="text-muted-foreground transition-colors hover:text-accent">
+              <Github className="h-4 w-4" />
+            </Link>
+            <Link href="https://linkedin.com/in/akramhossainrabbi" aria-label="LinkedIn" className="text-muted-foreground transition-colors hover:text-accent">
+              <Linkedin className="h-4 w-4" />
+            </Link>
+            <Link href="mailto:akramhossainrabbi@outlook.com" aria-label="Email" className="text-muted-foreground transition-colors hover:text-accent">
+              <Mail className="h-4 w-4" />
+            </Link>
           </div>
         </div>
       </footer>
