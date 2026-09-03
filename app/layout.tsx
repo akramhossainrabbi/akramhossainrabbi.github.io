@@ -1,24 +1,10 @@
 import type { Metadata } from 'next'
-import { Fraunces, IBM_Plex_Sans, IBM_Plex_Mono } from 'next/font/google'
+import { JetBrains_Mono } from 'next/font/google'
 import './globals.css'
 
-const fraunces = Fraunces({
+const jbMono = JetBrains_Mono({
   subsets: ['latin'],
-  variable: '--font-serif',
-  display: 'swap',
-  axes: ['opsz', 'SOFT', 'WONK'],
-})
-
-const plexSans = IBM_Plex_Sans({
-  subsets: ['latin'],
-  weight: ['400', '500', '600'],
-  variable: '--font-sans',
-  display: 'swap',
-})
-
-const plexMono = IBM_Plex_Mono({
-  subsets: ['latin'],
-  weight: ['400', '500'],
+  weight: ['400', '500', '700'],
   variable: '--font-mono',
   display: 'swap',
 })
@@ -36,7 +22,7 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en" className={`${fraunces.variable} ${plexSans.variable} ${plexMono.variable}`}>
+    <html lang="en" className={jbMono.variable}>
       <body>{children}</body>
     </html>
   )

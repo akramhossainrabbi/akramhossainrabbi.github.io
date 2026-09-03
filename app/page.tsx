@@ -1,34 +1,53 @@
 "use client"
 
-import { Github, Linkedin, Mail, ArrowUpRight } from "lucide-react"
+import { useEffect, useState } from "react"
+import { Github, Linkedin, Mail, Phone, ArrowUpRight } from "lucide-react"
 import Link from "next/link"
 
 const NAV = [
-  { href: "#about", label: "About" },
-  { href: "#skills", label: "Skills" },
-  { href: "#experience", label: "Experience" },
-  { href: "#projects", label: "Projects" },
-  { href: "#contact", label: "Contact" },
+  { href: "#about", label: "about" },
+  { href: "#skills", label: "skills" },
+  { href: "#experience", label: "experience" },
+  { href: "#projects", label: "projects" },
+  { href: "#contact", label: "contact" },
 ]
 
-const FACTS = [
-  { label: "Focus", value: "Laravel & PHP backend systems" },
-  { label: "Experience", value: "6+ years" },
-  { label: "Based in", value: "Dhaka, Bangladesh" },
-  { label: "Currently", value: "Lead Software Engineer, Blocknots" },
+const TERMINAL_LINES = [
+  "$ whoami",
+  "akram_hossain",
+  "",
+  "$ cat role.txt",
+  "Lead Software Engineer — Backend & ERP Systems",
+  "",
+  "$ cat summary.txt",
+  "6+ years building Laravel/PHP backend systems — ERP platforms,",
+  "VAT compliance software, and the APIs that hold them together.",
+  "Currently leading backend architecture at Blocknots.",
 ]
+const FULL_TEXT = TERMINAL_LINES.join("\n")
 
-const SKILLS = [
-  { category: "Backend & Frameworks", items: "Laravel, PHP, CodeIgniter, Django, Flask, Node.js" },
-  { category: "Frontend", items: "JavaScript, React.js, HTML, CSS" },
-  { category: "Languages", items: "PHP, Python, SQL, Bash" },
-  { category: "Databases", items: "MySQL, PostgreSQL" },
-  { category: "Tools & Cloud", items: "Git, Docker, Jenkins, AWS" },
-  { category: "Data & Analytics", items: "Pandas, NumPy, SciPy, Matplotlib, Seaborn, Scikit-learn" },
+function useTypewriter(text: string, speed = 14) {
+  const [count, setCount] = useState(0)
+  useEffect(() => {
+    if (count >= text.length) return
+    const t = setTimeout(() => setCount((c) => c + 1), speed)
+    return () => clearTimeout(t)
+  }, [count, text.length])
+  return { revealed: text.slice(0, count), done: count >= text.length }
+}
+
+const SKILLS: [string, string[]][] = [
+  ["backend", ["Laravel", "PHP", "CodeIgniter", "Django", "Flask", "Node.js"]],
+  ["frontend", ["JavaScript", "React.js", "HTML", "CSS"]],
+  ["languages", ["PHP", "Python", "SQL", "Bash"]],
+  ["databases", ["MySQL", "PostgreSQL"]],
+  ["tools_cloud", ["Git", "Docker", "Jenkins", "AWS"]],
+  ["data_analytics", ["Pandas", "NumPy", "SciPy", "Matplotlib", "Seaborn", "Scikit-learn"]],
 ]
 
 const EXPERIENCE = [
   {
+    branch: "role/lead-software-engineer",
     role: "Lead Software Engineer",
     company: "Blocknots LTD.",
     location: "Dhaka, Bangladesh",
@@ -40,6 +59,7 @@ const EXPERIENCE = [
     ],
   },
   {
+    branch: "role/senior-software-developer",
     role: "Senior Software Developer",
     company: "Next Page Technology Ltd.",
     location: "Dhaka, Bangladesh",
@@ -51,6 +71,7 @@ const EXPERIENCE = [
     ],
   },
   {
+    branch: "role/backend-developer",
     role: "Backend Developer",
     company: "Next Page Technology Ltd.",
     location: "Dhaka, Bangladesh",
@@ -61,6 +82,7 @@ const EXPERIENCE = [
     ],
   },
   {
+    branch: "role/full-stack-developer",
     role: "Full Stack Developer",
     company: "MH IT Bangladesh",
     location: "Dhaka, Bangladesh",
@@ -71,6 +93,7 @@ const EXPERIENCE = [
     ],
   },
   {
+    branch: "role/web-application-developer",
     role: "Web Application Developer",
     company: "Online Network Engineering Limited",
     location: "Gazipur, Dhaka, Bangladesh",
@@ -83,10 +106,9 @@ const EXPERIENCE = [
 ]
 
 type Project = {
-  name: string
-  tag?: string
-  description: string
-  stack: string[]
+  file: string
+  description: string[]
+  stack: string
   status: string
   link?: { href: string; label: string }
   links?: { href: string; label: string }[]
@@ -94,90 +116,96 @@ type Project = {
 
 const PROJECTS: Project[] = [
   {
-    name: "Real Estate ERP Platform",
-    tag: "Blocknots",
-    description:
-      "Leading backend architecture for an in-progress ERP platform for real estate businesses — property/listing management, transactions, and agent workflows.",
-    stack: ["Laravel", "PHP", "MySQL"],
-    status: "Ongoing, 2025",
+    file: "real-estate-erp-platform.php",
+    description: [
+      "Leading backend architecture for an in-progress ERP",
+      "platform for real estate businesses — property/listing",
+      "management, transactions, and agent workflows.",
+    ],
+    stack: "Laravel, PHP, MySQL",
+    status: "Ongoing, 2025 · Blocknots",
   },
   {
-    name: "Nexvat — VAT Management Software",
-    tag: "NBR-enlisted",
-    description:
-      "VAT compliance platform with automated tax calculations, compliance reporting, and dynamic reports for business tax obligations.",
-    stack: ["Laravel", "React.js", "MySQL"],
-    status: "2025",
-    link: { href: "https://nexvat.com/", label: "View site" },
+    file: "nexvat-vat-management.php",
+    description: [
+      "VAT compliance platform with automated tax calculations,",
+      "compliance reporting, and dynamic reports for business",
+      "tax obligations.",
+    ],
+    stack: "Laravel, React.js, MySQL",
+    status: "2025 · NBR-enlisted",
+    link: { href: "https://nexvat.com/", label: "nexvat.com" },
   },
   {
-    name: "ERP System — Fintrack360",
-    description: "Financial management & ERP system with advanced reporting and analytics for business management.",
-    stack: ["Laravel", "PHP", "JavaScript", "MySQL"],
+    file: "fintrack360-erp-system.php",
+    description: ["Financial management & ERP system with advanced", "reporting and analytics for business management."],
+    stack: "Laravel, PHP, JavaScript, MySQL",
     status: "2024",
-    link: { href: "https://nextpagetl.com/products", label: "Product page" },
+    link: { href: "https://nextpagetl.com/products", label: "nextpagetl.com/products" },
   },
   {
-    name: "Real Estate Management System",
-    description:
-      "Property listings, client management, sales tracking, and portfolio management for real estate agencies and developers.",
-    stack: ["Laravel", "PHP", "MySQL"],
+    file: "real-estate-management-system.php",
+    description: [
+      "Property listings, client management, sales tracking,",
+      "and portfolio management for real estate agencies.",
+    ],
+    stack: "Laravel, PHP, MySQL",
     status: "2024",
-    link: { href: "https://formonic.nextpagetl.com/", label: "View demo" },
+    link: { href: "https://formonic.nextpagetl.com/", label: "formonic.nextpagetl.com" },
   },
   {
-    name: "Travel & Booking Management System",
-    description: "Hotel bookings, flight reservations, car rentals, and integrated travel services for trip planning.",
-    stack: ["Laravel", "PHP", "MySQL", "API Integration", "Payment Gateway"],
+    file: "booking360-travel-system.php",
+    description: ["Hotel bookings, flight reservations, car rentals, and", "integrated travel services for trip planning."],
+    stack: "Laravel, PHP, MySQL, API Integration",
     status: "2023",
-    link: { href: "https://booking360.nextpagetl.com/", label: "View demo" },
+    link: { href: "https://booking360.nextpagetl.com/", label: "booking360.nextpagetl.com" },
   },
   {
-    name: "POS System",
-    description: "Point-of-sale solution for streamlined transactions and inventory management.",
-    stack: ["Laravel", "PHP", "JavaScript", "MySQL"],
+    file: "pos-system.php",
+    description: ["Point-of-sale solution for streamlined transactions", "and inventory management."],
+    stack: "Laravel, PHP, JavaScript, MySQL",
     status: "2023",
-    link: { href: "https://ssp.nextpagetl.com/", label: "View demo" },
+    link: { href: "https://ssp.nextpagetl.com/", label: "ssp.nextpagetl.com" },
   },
   {
-    name: "Learning Management System",
-    description: "Modern LMS with a Next.js frontend and a Node.js/MySQL backend for an educational platform.",
-    stack: ["Next.js", "Node.js", "MySQL", "React"],
+    file: "lms-platform.ts",
+    description: ["Modern LMS with a Next.js frontend and a Node.js/MySQL", "backend for an educational platform."],
+    stack: "Next.js, Node.js, MySQL, React",
     status: "2022",
-    link: { href: "https://thepolycube.com/", label: "View site" },
+    link: { href: "https://thepolycube.com/", label: "thepolycube.com" },
   },
   {
-    name: "Courier Management System",
-    description: "Courier and delivery management with tracking, route optimization, and customer notifications.",
-    stack: ["Laravel", "PHP", "MySQL", "API Integration"],
+    file: "courier-management.php",
+    description: ["Courier and delivery management with tracking, route", "optimization, and customer notifications."],
+    stack: "Laravel, PHP, MySQL, API Integration",
     status: "2022",
-    link: { href: "https://ecommerce11.nextpagetl.com/", label: "View demo" },
+    link: { href: "https://ecommerce11.nextpagetl.com/", label: "view demo" },
   },
   {
-    name: "School Management System",
-    description: "Educational institution management with student records, attendance, and grade management.",
-    stack: ["CodeIgniter", "PHP", "MySQL"],
+    file: "school-management.php",
+    description: ["Educational institution management with student", "records, attendance, and grade management."],
+    stack: "CodeIgniter, PHP, MySQL",
     status: "2022",
-    link: { href: "https://demo.nextpagetl.com/", label: "View demo" },
+    link: { href: "https://demo.nextpagetl.com/", label: "view demo" },
   },
   {
-    name: "Matrimony Platform",
-    description: "Specialized matrimonial service featuring a 'Most Match' compatibility system and custom packages.",
-    stack: ["Laravel", "PHP", "MySQL"],
+    file: "ideal-nikah-matrimony.php",
+    description: ["Matrimonial service featuring a 'Most Match'", "compatibility system and custom packages."],
+    stack: "Laravel, PHP, MySQL",
     status: "2021",
-    link: { href: "https://idealnikah.com/", label: "View site" },
+    link: { href: "https://idealnikah.com/", label: "idealnikah.com" },
   },
   {
-    name: "2nd Hand Marketplace",
-    description: "Marketplace for second-hand products with advanced search and filtering.",
-    stack: ["Laravel", "PHP", "MySQL"],
+    file: "2nd-hand-marketplace.php",
+    description: ["Marketplace for second-hand products with advanced", "search and filtering."],
+    stack: "Laravel, PHP, MySQL",
     status: "2021",
-    link: { href: "https://2ndhandmarketbd.com/", label: "View site" },
+    link: { href: "https://2ndhandmarketbd.com/", label: "2ndhandmarketbd.com" },
   },
   {
-    name: "E-commerce Platforms",
-    description: "Eight live e-commerce builds across different industries, focused on scalability and performance.",
-    stack: ["Laravel", "PHP", "MySQL", "API Development"],
+    file: "ecommerce-platforms.php",
+    description: ["Eight live e-commerce builds across different", "industries, focused on scalability and performance."],
+    stack: "Laravel, PHP, MySQL, API Development",
     status: "2020 — 2023",
     links: [
       { href: "https://durbiin.com/", label: "Durbiin" },
@@ -191,9 +219,9 @@ const PROJECTS: Project[] = [
     ],
   },
   {
-    name: "Corporate Websites",
-    description: "Backend systems for corporate sites with content management, SEO, and business integrations.",
-    stack: ["Laravel", "PHP", "MySQL"],
+    file: "corporate-websites.php",
+    description: ["Backend systems for corporate sites with content", "management, SEO, and business integrations."],
+    stack: "Laravel, PHP, MySQL",
     status: "2020 — 2022",
     links: [
       { href: "https://polluxchemicalsltd.com/", label: "Pollux Chemicals" },
@@ -203,22 +231,39 @@ const PROJECTS: Project[] = [
   },
 ]
 
+function TerminalChrome({ title }: { title: string }) {
+  return (
+    <div className="flex items-center gap-2 border-b border-border bg-secondary/40 px-4 py-2.5">
+      <span className="h-2.5 w-2.5 rounded-full bg-destructive/70" />
+      <span className="h-2.5 w-2.5 rounded-full bg-amber/70" />
+      <span className="h-2.5 w-2.5 rounded-full bg-accent/70" />
+      <span className="ml-3 text-xs text-muted-foreground">{title}</span>
+    </div>
+  )
+}
+
 export default function Portfolio() {
+  const { revealed, done } = useTypewriter(FULL_TEXT, 14)
+  const revealedLines = revealed.split("\n")
+
   return (
     <div className="min-h-screen bg-background">
       {/* Navigation */}
-      <nav className="sticky top-0 z-50 w-full border-b border-border bg-background">
-        <div className="container flex h-16 items-center justify-between">
-          <Link href="#" className="font-serif text-lg font-semibold tracking-tight">
-            Akram Hossain
+      <nav className="sticky top-0 z-50 w-full border-b border-border bg-background/95">
+        <div className="container flex h-14 items-center justify-between">
+          <Link href="#" className="flex items-center gap-2 text-sm">
+            <span className="h-2 w-2 rounded-full bg-accent" />
+            <span className="text-muted-foreground">~/</span>
+            <span className="font-medium">akram-hossain</span>
           </Link>
-          <div className="hidden sm:flex items-center gap-7">
+          <div className="hidden sm:flex items-center gap-1">
             {NAV.map((item) => (
               <Link
                 key={item.href}
                 href={item.href}
-                className="font-mono text-[11px] uppercase tracking-[0.12em] text-muted-foreground transition-colors hover:text-accent"
+                className="rounded-sm px-3 py-1.5 text-sm text-muted-foreground transition-colors hover:bg-secondary hover:text-accent"
               >
+                <span className="text-accent/70">--</span>
                 {item.label}
               </Link>
             ))}
@@ -227,225 +272,257 @@ export default function Portfolio() {
       </nav>
 
       {/* Hero */}
-      <section className="container border-b border-border py-20 md:py-32">
-        <div className="max-w-2xl">
-          <p className="font-mono text-xs uppercase tracking-[0.2em] text-accent">Backend Engineer · Dhaka, Bangladesh</p>
-          <h1 className="mt-4 font-serif text-5xl font-medium leading-[1.05] tracking-tight sm:text-6xl md:text-7xl">
-            Akram Hossain
-          </h1>
-          <p className="mt-3 font-mono text-sm text-muted-foreground sm:text-base">
-            Lead Software Engineer — Backend &amp; ERP Systems
-          </p>
-          <p className="mt-6 max-w-xl text-base leading-relaxed text-muted-foreground sm:text-lg">
-            I build backend systems that businesses actually run on — ERP platforms, VAT compliance
-            software, and the APIs that hold them together. Six-plus years in Laravel and PHP, most of it
-            spent owning architecture end to end and leading the teams who ship it.
-          </p>
-          <div className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-3">
-            <Link
-              href="#projects"
-              className="group inline-flex items-center gap-1 border-b border-foreground pb-0.5 text-sm font-medium transition-colors hover:border-accent hover:text-accent"
-            >
-              View my work
-              <ArrowUpRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-            </Link>
-            <Link
-              href="#contact"
-              className="text-sm font-medium text-muted-foreground transition-colors hover:text-accent"
-            >
-              Get in touch
-            </Link>
+      <section className="container py-16 md:py-24">
+        <div className="mx-auto max-w-2xl overflow-hidden rounded-sm border border-border bg-card shadow-2xl shadow-black/40">
+          <TerminalChrome title="akram@portfolio: ~" />
+          <div className="min-h-[280px] p-5 sm:p-8">
+            <pre className="whitespace-pre-wrap break-words text-[13px] leading-relaxed sm:text-sm">
+              {revealedLines.map((line, i) => (
+                <div
+                  key={i}
+                  className={line.startsWith("$ ") ? "font-medium text-accent" : "text-foreground/90"}
+                >
+                  {line || " "}
+                  {!done && i === revealedLines.length - 1 && (
+                    <span className="ml-0.5 inline-block h-[1em] w-[0.5em] translate-y-[2px] animate-pulse bg-accent align-middle" />
+                  )}
+                </div>
+              ))}
+              {done && (
+                <span className="mt-1 inline-block h-[1em] w-[0.5em] animate-pulse bg-accent align-middle" />
+              )}
+            </pre>
           </div>
-          <div className="mt-10 flex items-center gap-5">
-            <Link href="https://github.com/akramhossainrabbi" aria-label="GitHub" className="text-muted-foreground transition-colors hover:text-accent">
-              <Github className="h-5 w-5" />
-            </Link>
-            <Link href="https://linkedin.com/in/akramhossainrabbi" aria-label="LinkedIn" className="text-muted-foreground transition-colors hover:text-accent">
-              <Linkedin className="h-5 w-5" />
-            </Link>
-            <Link href="mailto:akramhossainrabbi@outlook.com" aria-label="Email" className="text-muted-foreground transition-colors hover:text-accent">
-              <Mail className="h-5 w-5" />
-            </Link>
-          </div>
+        </div>
+
+        <div className="mx-auto mt-8 flex max-w-2xl flex-wrap items-center gap-x-6 gap-y-3">
+          <Link
+            href="#projects"
+            className="group inline-flex items-center gap-1.5 text-sm text-accent transition-colors hover:text-foreground"
+          >
+            <span className="text-muted-foreground">$</span> view --projects
+            <ArrowUpRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+          </Link>
+          <Link
+            href="#contact"
+            className="inline-flex items-center gap-1.5 text-sm text-muted-foreground transition-colors hover:text-accent"
+          >
+            <span className="text-muted-foreground">$</span> contact --me
+          </Link>
+        </div>
+        <div className="mx-auto mt-6 flex max-w-2xl items-center gap-5">
+          <Link href="https://github.com/akramhossainrabbi" aria-label="GitHub" className="text-muted-foreground transition-colors hover:text-accent">
+            <Github className="h-5 w-5" />
+          </Link>
+          <Link href="https://linkedin.com/in/akramhossainrabbi" aria-label="LinkedIn" className="text-muted-foreground transition-colors hover:text-accent">
+            <Linkedin className="h-5 w-5" />
+          </Link>
+          <Link href="mailto:akramhossainrabbi@outlook.com" aria-label="Email" className="text-muted-foreground transition-colors hover:text-accent">
+            <Mail className="h-5 w-5" />
+          </Link>
+          <Link href="tel:+8801701061957" aria-label="Phone" className="text-muted-foreground transition-colors hover:text-accent">
+            <Phone className="h-5 w-5" />
+          </Link>
         </div>
       </section>
 
       {/* About */}
-      <section id="about" className="container grid gap-10 border-b border-border py-16 md:grid-cols-2 md:gap-16 md:py-24">
-        <div>
-          <p className="font-mono text-xs uppercase tracking-[0.2em] text-accent">About</p>
-          <h2 className="mt-3 font-serif text-3xl font-medium tracking-tight sm:text-4xl">
-            Backend-first, by choice.
-          </h2>
-          <p className="mt-6 text-base leading-relaxed text-muted-foreground">
-            I'm a lead software engineer specializing in Laravel development, with a particular focus on
-            backend architecture, API design, and database optimization. I care about systems that stay
-            legible as they grow — clear boundaries, sane data models, and code the next engineer can
-            actually follow. Outside of shipping, I lead and mentor development teams and hold an MSc in
-            Applied Statistics and Data Science, which still shapes how I think about the data layer.
+      <section id="about" className="border-t border-border">
+        <div className="container py-16 md:py-24">
+          <p className="text-sm text-muted-foreground">
+            <span className="text-accent">$</span> cat about.md
           </p>
-        </div>
-        <dl className="divide-y divide-border border-t border-border md:border-t-0 md:self-center">
-          {FACTS.map((fact) => (
-            <div key={fact.label} className="grid grid-cols-[120px_1fr] gap-4 py-4">
-              <dt className="font-mono text-xs uppercase tracking-[0.12em] text-muted-foreground">{fact.label}</dt>
-              <dd className="text-sm">{fact.value}</dd>
+          <div className="mt-6 max-w-2xl border-l-2 border-border pl-5 text-sm leading-relaxed text-muted-foreground sm:text-base">
+            <p>
+              I'm a lead software engineer specializing in Laravel development, with a particular focus on
+              backend architecture, API design, and database optimization. I care about systems that stay
+              legible as they grow — clear boundaries, sane data models, and code the next engineer can
+              actually follow.
+            </p>
+            <p className="mt-4">
+              Outside of shipping, I lead and mentor development teams, and hold an MSc in Applied
+              Statistics and Data Science — which still shapes how I think about the data layer underneath
+              every ERP system I build.
+            </p>
+          </div>
+
+          <div className="mt-8 max-w-md rounded-sm border border-border bg-card p-5 text-sm">
+            <div className="text-muted-foreground"># config.yml</div>
+            <div className="mt-3 space-y-1.5">
+              <div>
+                <span className="text-accent">focus</span>
+                <span className="text-muted-foreground">:</span> Laravel &amp; PHP backend systems
+              </div>
+              <div>
+                <span className="text-accent">experience</span>
+                <span className="text-muted-foreground">:</span> 6+ years
+              </div>
+              <div>
+                <span className="text-accent">based_in</span>
+                <span className="text-muted-foreground">:</span> Dhaka, Bangladesh
+              </div>
+              <div>
+                <span className="text-accent">currently</span>
+                <span className="text-muted-foreground">:</span> Lead Software Engineer, Blocknots
+              </div>
             </div>
-          ))}
-        </dl>
+          </div>
+        </div>
       </section>
 
       {/* Skills */}
-      <section id="skills" className="container border-b border-border py-16 md:py-24">
-        <p className="font-mono text-xs uppercase tracking-[0.2em] text-accent">Skills</p>
-        <h2 className="mt-3 font-serif text-3xl font-medium tracking-tight sm:text-4xl">Technical skills</h2>
-        <div className="mt-10 divide-y divide-border border-t border-border">
-          {SKILLS.map((s) => (
-            <div key={s.category} className="grid gap-1 py-4 sm:grid-cols-[220px_1fr] sm:gap-4 sm:py-5">
-              <div className="font-mono text-xs uppercase tracking-[0.1em] text-muted-foreground">{s.category}</div>
-              <div className="text-sm sm:text-base">{s.items}</div>
-            </div>
-          ))}
+      <section id="skills" className="border-t border-border">
+        <div className="container py-16 md:py-24">
+          <p className="text-sm text-muted-foreground">
+            <span className="text-accent">$</span> cat skills.json
+          </p>
+          <div className="mt-6 max-w-2xl overflow-x-auto rounded-sm border border-border bg-card p-5 text-[13px] leading-relaxed sm:p-6 sm:text-sm">
+            <div className="text-muted-foreground">{"{"}</div>
+            {SKILLS.map(([category, items], i) => (
+              <div key={category} className="pl-4">
+                <span className="text-accent">"{category}"</span>
+                <span className="text-muted-foreground">: [</span>
+                <span className="text-amber">{items.map((s) => `"${s}"`).join(", ")}</span>
+                <span className="text-muted-foreground">]{i < SKILLS.length - 1 ? "," : ""}</span>
+              </div>
+            ))}
+            <div className="text-muted-foreground">{"}"}</div>
+          </div>
         </div>
       </section>
 
       {/* Experience */}
-      <section id="experience" className="container border-b border-border py-16 md:py-24">
-        <p className="font-mono text-xs uppercase tracking-[0.2em] text-accent">Experience</p>
-        <h2 className="mt-3 font-serif text-3xl font-medium tracking-tight sm:text-4xl">Professional experience</h2>
-        <div className="mt-10 divide-y divide-border border-t border-border">
-          {EXPERIENCE.map((job) => (
-            <div key={`${job.company}-${job.date}`} className="grid gap-2 py-8 sm:grid-cols-[160px_1fr] sm:gap-8">
-              <div className="font-mono text-xs uppercase tracking-[0.08em] text-muted-foreground">{job.date}</div>
-              <div>
-                <h3 className="font-serif text-xl font-medium">{job.role}</h3>
-                <p className="mt-0.5 text-sm text-muted-foreground">
-                  {job.company} · {job.location}
+      <section id="experience" className="border-t border-border">
+        <div className="container py-16 md:py-24">
+          <p className="text-sm text-muted-foreground">
+            <span className="text-accent">$</span> git log --all --stat
+          </p>
+          <div className="mt-6 max-w-2xl space-y-8">
+            {EXPERIENCE.map((job) => (
+              <div key={job.branch} className="border-l-2 border-border pl-5">
+                <p className="text-xs text-amber sm:text-sm">branch: {job.branch}</p>
+                <p className="mt-1 text-xs text-muted-foreground sm:text-sm">
+                  {job.company} · {job.location} ·{" "}
+                  <span className="text-accent">{job.date}</span>
                 </p>
-                <ul className="mt-4 space-y-2">
+                <h3 className="mt-3 text-lg font-medium sm:text-xl">{job.role}</h3>
+                <ul className="mt-3 space-y-2">
                   {job.bullets.map((b, i) => (
-                    <li key={i} className="flex gap-3 text-sm leading-relaxed text-muted-foreground sm:text-base">
-                      <span className="mt-2 h-1 w-1 flex-none rounded-full bg-accent" />
+                    <li key={i} className="flex gap-2 text-sm leading-relaxed text-muted-foreground">
+                      <span className="text-accent">+</span>
                       <span>{b}</span>
                     </li>
                   ))}
                 </ul>
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
       </section>
 
       {/* Projects */}
-      <section id="projects" className="container border-b border-border py-16 md:py-24">
-        <p className="font-mono text-xs uppercase tracking-[0.2em] text-accent">Projects</p>
-        <h2 className="mt-3 font-serif text-3xl font-medium tracking-tight sm:text-4xl">Selected work</h2>
-        <p className="mt-4 max-w-xl text-muted-foreground">
-          Backend contributions across ERP, compliance, e-commerce, and platform builds.
-        </p>
-        <div className="mt-10 grid gap-px overflow-hidden border border-border bg-border sm:grid-cols-2">
-          {PROJECTS.map((p, i) => (
-            <div key={p.name} className="group flex flex-col bg-background p-6 transition-colors hover:bg-secondary/60 sm:p-8">
-              <div className="flex items-start justify-between gap-4">
-                <span className="font-mono text-xs text-muted-foreground">{String(i + 1).padStart(2, "0")}</span>
-                <span className="font-mono text-[11px] uppercase tracking-[0.1em] text-accent">{p.status}</span>
-              </div>
-              <h3 className="mt-4 font-serif text-xl font-medium leading-snug">
-                {p.name}
-                {p.tag && <span className="ml-2 align-middle font-mono text-[11px] font-normal uppercase tracking-[0.08em] text-muted-foreground">· {p.tag}</span>}
-              </h3>
-              <p className="mt-3 flex-1 text-sm leading-relaxed text-muted-foreground">{p.description}</p>
-              <p className="mt-4 font-mono text-xs text-muted-foreground">{p.stack.join(" · ")}</p>
-
-              {p.link && (
-                <Link
-                  href={p.link.href}
-                  target="_blank"
-                  className="mt-5 inline-flex w-fit items-center gap-1 border-b border-foreground pb-0.5 text-sm font-medium transition-colors hover:border-accent hover:text-accent"
-                >
-                  {p.link.label}
-                  <ArrowUpRight className="h-3.5 w-3.5" />
-                </Link>
-              )}
-
-              {p.links && (
-                <div className="mt-5 grid grid-cols-2 gap-x-4 gap-y-2">
-                  {p.links.map((l) => (
-                    <Link
-                      key={l.href}
-                      href={l.href}
-                      target="_blank"
-                      className="inline-flex items-center gap-1 text-sm text-muted-foreground transition-colors hover:text-accent"
-                    >
-                      {l.label}
-                      <ArrowUpRight className="h-3 w-3" />
-                    </Link>
+      <section id="projects" className="border-t border-border">
+        <div className="container py-16 md:py-24">
+          <p className="text-sm text-muted-foreground">
+            <span className="text-accent">$</span> ls --projects -la
+          </p>
+          <p className="mt-4 max-w-xl text-sm text-muted-foreground sm:text-base">
+            Backend contributions across ERP, compliance, e-commerce, and platform builds.
+          </p>
+          <div className="mt-8 grid gap-5 sm:grid-cols-2">
+            {PROJECTS.map((p) => (
+              <div key={p.file} className="rounded-sm border border-border bg-card p-5 text-[13px] leading-relaxed sm:text-sm">
+                <p className="text-muted-foreground"># {p.file}</p>
+                <div className="mt-2 text-muted-foreground/80">
+                  <div>{"/**"}</div>
+                  {p.description.map((line, i) => (
+                    <div key={i}> * {line}</div>
                   ))}
+                  <div> *</div>
+                  <div>
+                    {" * "}
+                    <span className="text-accent">@stack</span> {p.stack}
+                  </div>
+                  <div>
+                    {" * "}
+                    <span className="text-accent">@status</span>{" "}
+                    <span className="text-amber">{p.status}</span>
+                  </div>
+                  {p.link && (
+                    <div>
+                      {" * "}
+                      <span className="text-accent">@link</span>{" "}
+                      <Link href={p.link.href} target="_blank" className="text-foreground underline decoration-border underline-offset-2 hover:text-accent hover:decoration-accent">
+                        {p.link.label}
+                      </Link>
+                    </div>
+                  )}
+                  <div>{" */"}</div>
                 </div>
-              )}
 
-              {!p.link && !p.links && (
-                <p className="mt-5 font-mono text-xs italic text-muted-foreground">In development</p>
-              )}
-            </div>
-          ))}
+                {p.links && (
+                  <div className="mt-3 grid grid-cols-2 gap-x-4 gap-y-1 border-t border-border pt-3">
+                    {p.links.map((l) => (
+                      <Link
+                        key={l.href}
+                        href={l.href}
+                        target="_blank"
+                        className="inline-flex items-center gap-1 text-xs text-muted-foreground transition-colors hover:text-accent"
+                      >
+                        {l.label}
+                        <ArrowUpRight className="h-3 w-3" />
+                      </Link>
+                    ))}
+                  </div>
+                )}
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
       {/* Contact */}
-      <section id="contact" className="container py-16 md:py-24">
-        <div className="max-w-xl">
-          <p className="font-mono text-xs uppercase tracking-[0.2em] text-accent">Contact</p>
-          <h2 className="mt-3 font-serif text-4xl font-medium tracking-tight sm:text-5xl">
-            Let's build something.
-          </h2>
-          <p className="mt-6 text-base leading-relaxed text-muted-foreground">
+      <section id="contact" className="border-t border-border">
+        <div className="container py-16 md:py-24">
+          <p className="text-sm text-muted-foreground">
+            <span className="text-accent">$</span> ./contact.sh
+          </p>
+          <h2 className="mt-6 text-3xl font-medium sm:text-4xl">Let's build something.</h2>
+          <p className="mt-4 max-w-xl text-sm leading-relaxed text-muted-foreground sm:text-base">
             I'm open to new opportunities and interesting backend problems. If you need a Laravel expert
             on your team, or just want to talk through a project, reach out.
           </p>
-          <div className="mt-8 flex flex-col gap-3">
-            <Link
-              href="mailto:akramhossainrabbi@outlook.com"
-              className="inline-flex w-fit items-center gap-2 border-b border-foreground pb-0.5 text-base font-medium transition-colors hover:border-accent hover:text-accent"
-            >
-              <Mail className="h-4 w-4" />
-              akramhossainrabbi@outlook.com
-            </Link>
-            <Link
-              href="https://linkedin.com/in/akramhossainrabbi"
-              className="inline-flex w-fit items-center gap-2 text-sm text-muted-foreground transition-colors hover:text-accent"
-            >
-              <Linkedin className="h-4 w-4" />
-              linkedin.com/in/akramhossainrabbi
-            </Link>
-            <Link
-              href="https://github.com/akramhossainrabbi"
-              className="inline-flex w-fit items-center gap-2 text-sm text-muted-foreground transition-colors hover:text-accent"
-            >
-              <Github className="h-4 w-4" />
-              github.com/akramhossainrabbi
-            </Link>
+          <div className="mt-8 max-w-md rounded-sm border border-border bg-card p-5 text-sm">
+            <div className="space-y-2.5">
+              <Link href="mailto:akramhossainrabbi@outlook.com" className="flex items-center gap-2.5 transition-colors hover:text-accent">
+                <Mail className="h-4 w-4 text-accent" />
+                akramhossainrabbi@outlook.com
+              </Link>
+              <Link href="tel:+8801701061957" className="flex items-center gap-2.5 text-muted-foreground transition-colors hover:text-accent">
+                <Phone className="h-4 w-4 text-accent" />
+                +880 1701-061957
+              </Link>
+              <Link href="https://linkedin.com/in/akramhossainrabbi" className="flex items-center gap-2.5 text-muted-foreground transition-colors hover:text-accent">
+                <Linkedin className="h-4 w-4 text-accent" />
+                linkedin.com/in/akramhossainrabbi
+              </Link>
+              <Link href="https://github.com/akramhossainrabbi" className="flex items-center gap-2.5 text-muted-foreground transition-colors hover:text-accent">
+                <Github className="h-4 w-4 text-accent" />
+                github.com/akramhossainrabbi
+              </Link>
+            </div>
           </div>
         </div>
       </section>
 
       {/* Footer */}
       <footer className="border-t border-border py-8">
-        <div className="container flex flex-col items-center justify-between gap-4 sm:flex-row">
-          <p className="font-mono text-xs text-muted-foreground">
-            © 2024–{new Date().getFullYear()} Akram Hossain
+        <div className="container flex flex-col items-center justify-between gap-3 text-xs text-muted-foreground sm:flex-row">
+          <p>
+            <span className="text-accent">$</span> echo $? <span className="ml-2">0</span>
+            <span className="ml-2">// © 2024–{new Date().getFullYear()} Akram Hossain</span>
           </p>
-          <div className="flex items-center gap-5">
-            <Link href="https://github.com/akramhossainrabbi" aria-label="GitHub" className="text-muted-foreground transition-colors hover:text-accent">
-              <Github className="h-4 w-4" />
-            </Link>
-            <Link href="https://linkedin.com/in/akramhossainrabbi" aria-label="LinkedIn" className="text-muted-foreground transition-colors hover:text-accent">
-              <Linkedin className="h-4 w-4" />
-            </Link>
-            <Link href="mailto:akramhossainrabbi@outlook.com" aria-label="Email" className="text-muted-foreground transition-colors hover:text-accent">
-              <Mail className="h-4 w-4" />
-            </Link>
-          </div>
+          <p className="text-muted-foreground/70">Built with Next.js &amp; Tailwind</p>
         </div>
       </footer>
     </div>
