@@ -50,7 +50,7 @@ export default function Portfolio() {
       <section className="container py-10 md:py-32">
         <div className="flex flex-col items-center text-center space-y-8 px-2">
           <div className="space-y-4">
-            <h1 className="text-2xl sm:text-3xl md:text-6xl font-bold tracking-tight">Senior Laravel Developer</h1>
+            <h1 className="text-2xl sm:text-3xl md:text-6xl font-bold tracking-tight">Lead Software Engineer</h1>
             <p className="text-sm sm:text-base md:text-xl text-muted-foreground max-w-2xl mx-auto">
               Crafting robust, scalable web applications with Laravel. Passionate about clean code, modern architecture,
               and delivering exceptional user experiences.
@@ -92,7 +92,7 @@ export default function Portfolio() {
         <div className="max-w-3xl mx-auto text-center space-y-8 px-2">
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold">About Me</h2>
           <p className="text-sm sm:text-base md:text-lg text-muted-foreground leading-relaxed">
-            I'm a senior software developer with over 4 years of experience specializing in Laravel development. I have
+            I'm a lead software engineer with 6+ years of experience specializing in Laravel development. I have
             a passion for building scalable, maintainable applications and leading development teams to success. My
             expertise spans the entire web development stack, with a particular focus on backend architecture, API
             design, and database optimization.
@@ -208,7 +208,41 @@ export default function Portfolio() {
         <div className="text-center space-y-8 px-2">
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold">Professional Experience</h2>
           <div className="max-w-4xl mx-auto space-y-8">
-            {/* Senior Software Developer - Current Position */}
+            {/* Lead Software Engineer - Current Position */}
+            <Card>
+              <CardHeader>
+                <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start text-left gap-2 sm:gap-0">
+                  <div>
+                    <CardTitle className="text-base sm:text-lg md:text-xl">Lead Software Engineer</CardTitle>
+                    <CardDescription className="text-sm sm:text-base md:text-lg">
+                      Blocknots LTD.
+                    </CardDescription>
+                    <p className="text-xs sm:text-sm text-muted-foreground mt-1">Dhaka, Bangladesh</p>
+                  </div>
+                  <Badge variant="secondary" className="mt-2 sm:mt-0">
+                    Jan 2025 - Present
+                  </Badge>
+                </div>
+              </CardHeader>
+              <CardContent>
+                <ul className="space-y-2 text-muted-foreground pl-5 text-left text-xs sm:text-sm md:text-base">
+                  <li>• Lead system architecture and backend development for the company's products, keeping applications scalable, secure, and maintainable as they grow</li>
+                  <li>• Guide the development team through code reviews, technical direction, and best-practice enforcement</li>
+                  <li>• Work directly with stakeholders to translate business requirements into technical solutions, and own deployments and CI/CD processes for reliable releases</li>
+                  <li>• Currently architecting the backend for an in-progress real estate ERP platform</li>
+                </ul>
+                <div className="flex flex-wrap gap-2 mt-4 text-xs md:text-sm">
+                  <Badge variant="outline">PHP</Badge>
+                  <Badge variant="outline">Laravel</Badge>
+                  <Badge variant="outline">MySQL</Badge>
+                  <Badge variant="outline">Team Leadership</Badge>
+                  <Badge variant="outline">System Architecture</Badge>
+                  <Badge variant="outline">CI/CD</Badge>
+                  <Badge variant="outline">Git</Badge>
+                </div>
+              </CardContent>
+            </Card>
+            {/* Senior Software Developer - Next Page */}
             <Card>
               <CardHeader>
                 <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start text-left gap-2 sm:gap-0">
@@ -220,28 +254,22 @@ export default function Portfolio() {
                     <p className="text-xs sm:text-sm text-muted-foreground mt-1">Dhaka, Bangladesh</p>
                   </div>
                   <Badge variant="secondary" className="mt-2 sm:mt-0">
-                    Nov 2024 - Present
+                    Nov 2023 - Dec 2024
                   </Badge>
                 </div>
               </CardHeader>
               <CardContent>
                 <ul className="space-y-2 text-muted-foreground pl-5 text-left text-xs sm:text-sm md:text-base">
-                  <li>• Leading development teams and mentoring junior developers in Laravel best practices</li>
-                  <li>• Architecting scalable enterprise solutions and microservices architecture</li>
-                  <li>• Implementing advanced performance optimization and database query optimization</li>
-                  <li>• Designing and reviewing system architecture for complex business applications</li>
-                  <li>• Managing project timelines and coordinating with stakeholders for requirement analysis</li>
-                  <li>• Establishing coding standards and conducting technical code reviews</li>
+                  <li>• Developed an enterprise resource planning (ERP) system in Laravel, covering business management workflows with advanced reporting and analytics</li>
+                  <li>• Architected RESTful APIs for third-party integrations, strengthening the platform's scalability and reliability</li>
+                  <li>• Mentored 5+ developers, establishing coding standards and CI/CD pipelines with Jenkins and Git</li>
                 </ul>
                 <div className="flex flex-wrap gap-2 mt-4 text-xs md:text-sm">
                   <Badge variant="outline">PHP</Badge>
                   <Badge variant="outline">Laravel</Badge>
-                  <Badge variant="outline">React.js</Badge>
-                  <Badge variant="outline">Next.js</Badge>
-                  <Badge variant="outline">Node.js</Badge>
-                  <Badge variant="outline">Python</Badge>
+                  <Badge variant="outline">MySQL</Badge>
                   <Badge variant="outline">Team Leadership</Badge>
-                  <Badge variant="outline">System Architecture</Badge>
+                  <Badge variant="outline">Jenkins</Badge>
                   <Badge variant="outline">Git</Badge>
                 </div>
               </CardContent>
@@ -255,27 +283,20 @@ export default function Portfolio() {
                     <CardDescription className="text-sm sm:text-base md:text-lg">Next Page Technology Ltd.</CardDescription>
                     <p className="text-xs sm:text-sm text-muted-foreground mt-1">Dhaka, Bangladesh</p>
                   </div>
-                  <Badge variant="secondary" className="mt-2 sm:mt-0">Jul 2022 - Nov 2024</Badge>
+                  <Badge variant="secondary" className="mt-2 sm:mt-0">Jul 2022 - Nov 2023</Badge>
                 </div>
               </CardHeader>
               <CardContent>
                 <ul className="space-y-2 text-muted-foreground pl-5 text-left text-xs sm:text-sm md:text-base">
-                  <li>• Developed and maintained scalable web applications using Laravel and modern PHP practices</li>
-                  <li>• Built responsive frontend interfaces with React.js, and Next.js frameworks</li>
-                  <li>• Implemented RESTful APIs and integrated third-party services for enhanced functionality</li>
-                  <li>• Collaborated with cross-functional teams using Git for version control and project management</li>
-                  <li>• Optimized application performance and implemented best practices for code quality</li>
-                  <li>• Worked with Python for data processing and automation tasks</li>
+                  <li>• Built high-traffic Laravel applications, including a POS system for streamlined transactions, and optimized MySQL queries for better performance</li>
+                  <li>• Integrated third-party APIs and automated deployment pipelines using Docker and AWS</li>
                 </ul>
                 <div className="flex flex-wrap gap-2 mt-4 text-xs md:text-sm">
                   <Badge variant="outline">PHP</Badge>
                   <Badge variant="outline">Laravel</Badge>
-                  <Badge variant="outline">React.js</Badge>
-                  <Badge variant="outline">Next.js</Badge>
-                  <Badge variant="outline">Node.js</Badge>
-                  <Badge variant="outline">Python</Badge>
-                  <Badge variant="outline">Tailwind CSS</Badge>
-                  <Badge variant="outline">CodeIgniter</Badge>
+                  <Badge variant="outline">MySQL</Badge>
+                  <Badge variant="outline">Docker</Badge>
+                  <Badge variant="outline">AWS</Badge>
                   <Badge variant="outline">Git</Badge>
                 </div>
               </CardContent>
@@ -361,9 +382,9 @@ export default function Portfolio() {
                   <div className="aspect-video bg-gradient-to-br from-purple-500 to-indigo-600 rounded-md mb-4 flex items-center justify-center">
                     <Database className="h-12 w-12 text-white" />
                   </div>
-                  <CardTitle>ERP System</CardTitle>
+                  <CardTitle>ERP System — Fintrack360</CardTitle>
                   <CardDescription>
-                    Created an enterprise resource planning system for comprehensive business management with advanced
+                    Financial management & ERP system for comprehensive business management with advanced
                     reporting and analytics.
                   </CardDescription>
                 </CardHeader>
@@ -376,12 +397,11 @@ export default function Portfolio() {
                   </div>
                   <div className="space-y-2">
                     <Button size="sm" asChild className="w-full">
-                      <Link href="https://accounts.denim-destiny.com/" target="_blank">
+                      <Link href="https://nextpagetl.com/products" target="_blank">
                         <Globe className="h-4 w-4 mr-2" />
-                        View ERP System
+                        View Product Page
                       </Link>
                     </Button>
-                    <p className="text-xs text-muted-foreground text-center">Demo Login: admin@gmail.com / 12312345</p>
                   </div>
                 </CardContent>
               </Card>
@@ -631,6 +651,28 @@ export default function Portfolio() {
                 </CardContent>
               </Card>
 
+              {/* Real Estate ERP - Blocknots (Ongoing) */}
+              <Card className="group hover:shadow-lg transition-shadow">
+                <CardHeader>
+                  <div className="aspect-video bg-gradient-to-br from-slate-500 to-cyan-700 rounded-md mb-4 flex items-center justify-center">
+                    <Database className="h-12 w-12 text-white" />
+                  </div>
+                  <CardTitle>Real Estate ERP Platform</CardTitle>
+                  <CardDescription>
+                    Leading backend architecture for an in-progress ERP platform for real estate businesses at
+                    Blocknots, covering property/listing management, transactions, and agent workflows.
+                  </CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <div className="flex flex-wrap gap-2 mb-4">
+                    <Badge variant="outline">Laravel</Badge>
+                    <Badge variant="outline">PHP</Badge>
+                    <Badge variant="outline">MySQL</Badge>
+                  </div>
+                  <Badge variant="secondary">Ongoing, 2025</Badge>
+                </CardContent>
+              </Card>
+
               {/* PMS System */}
               <Card className="group hover:shadow-lg transition-shadow">
                 <CardHeader>
@@ -671,7 +713,7 @@ export default function Portfolio() {
                   <div className="aspect-video bg-gradient-to-br from-emerald-500 to-teal-600 rounded-md mb-4 flex items-center justify-center">
                     <Server className="h-12 w-12 text-white" />
                   </div>
-                  <CardTitle>VAT Management Software</CardTitle>
+                  <CardTitle>Nexvat — VAT Management Software</CardTitle>
                   <CardDescription>
                     Specialized VAT calculation and compliance software for businesses to manage tax obligations and
                     generate reports.
